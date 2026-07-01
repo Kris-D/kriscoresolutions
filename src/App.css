@@ -1,0 +1,81 @@
+/* Clean slate */
+
+/* ── Slim Custom Scrollbar ── */
+
+/* Firefox only */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #3b82f6 transparent;
+  }
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track,
+.dark::-webkit-scrollbar-track {
+  background: #595959;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 999px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #60a5fa;
+}
+
+/* ── Hero Glow Orb Animations ── */
+
+/* Orb 1: Roams from top-left across to center, down, and back */
+@keyframes roam-1 {
+  0%   { transform: translate(0px,   0px);   opacity: 0.85; }
+  20%  { transform: translate(120px, -60px); opacity: 1;    }
+  40%  { transform: translate(220px,  40px); opacity: 0.9;  }
+  60%  { transform: translate(100px, 120px); opacity: 1;    }
+  80%  { transform: translate(-40px,  80px); opacity: 0.8;  }
+  100% { transform: translate(0px,   0px);   opacity: 0.85; }
+}
+
+/* Orb 2: Roams from bottom-right across to center-left, up, and back */
+@keyframes roam-2 {
+  0%   { transform: translate(0px,    0px);    opacity: 0.7;  }
+  25%  { transform: translate(-130px, -80px);  opacity: 0.95; }
+  50%  { transform: translate(-200px, -160px); opacity: 0.8;  }
+  75%  { transform: translate(-80px,  -60px);  opacity: 1;    }
+  100% { transform: translate(0px,    0px);    opacity: 0.7;  }
+}
+
+/* Orb 3: Wide wandering figure-8 path */
+@keyframes roam-3 {
+  0%   { transform: translate(0px,   0px);    opacity: 0.65; }
+  16%  { transform: translate(-80px,  60px);  opacity: 0.9;  }
+  33%  { transform: translate(-160px, -40px); opacity: 0.75; }
+  50%  { transform: translate(-80px, -100px); opacity: 1;    }
+  66%  { transform: translate(60px,  -80px);  opacity: 0.8;  }
+  83%  { transform: translate(80px,   30px);  opacity: 0.9;  }
+  100% { transform: translate(0px,   0px);    opacity: 0.65; }
+}
+
+/* Animation utility classes */
+.glow-float {
+  animation: roam-1 14s ease-in-out infinite;
+}
+
+.glow-pulse {
+  animation: roam-2 18s ease-in-out infinite;
+}
+
+.glow-drift {
+  animation: roam-3 22s ease-in-out infinite;
+}
