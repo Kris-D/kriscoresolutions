@@ -27,11 +27,12 @@ import { themeStyles } from '../../styles/themeStyles'
 import heroMockup from '../../assets/Hero.svg'
 import logoImg from '../../assets/logo.png'
 import logoDarkImg from '../../assets/logo_dark.png'
-import payeaseMockup from '../../assets/payease_mockup.jpg'
-import homeMockup from '../../assets/home.png'
-import clinicMockup from '../../assets/clinic.svg'
+import payeaseMockup from '../../assets/payeaselogo.png'
+import homeMockup from '../../assets/homelinklogo.png'
+import clinicMockup from '../../assets/clinicpluslogo.png'
 import AboutIndex from '../about/Index'
 import TalkIndex from '../talk/Index'
+import ProductsIndex from '../products/Index'
 
 const WORDS = [
   "Modern World",
@@ -54,6 +55,7 @@ const WORDS = [
 export default function Index() {
   const [isDark, setIsDark] = useState(true)
   const [activeTab, setActiveTab] = useState('Home')
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [wordIndex, setWordIndex] = useState(0)
   const [fadeProp, setFadeProp] = useState('opacity-100 translate-y-0 scale-100')
 
@@ -88,7 +90,7 @@ export default function Index() {
   }, [isDark])
 
   useEffect(() => {
-    if (activeTab === 'Home' || activeTab === 'About Us' || activeTab === 'Blog' || activeTab === "Let's Talk") {
+    if (activeTab === 'Home' || activeTab === 'About Us' || activeTab === 'Blog' || activeTab === "Let's Talk" || activeTab === 'Products') {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else if (activeTab === 'Services') {
       document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
@@ -107,13 +109,13 @@ export default function Index() {
     <div className={themeStyles.wrapper}>
       {/* 1. Header / Navigation Bar */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-neutral-950/70 border-b border-neutral-200/50 dark:border-neutral-800/50 transition-colors duration-300">
-        <div className={`${themeStyles.container} h-24 flex items-center justify-between`}>
-          {/* Logo Brand — swaps between light/dark logo based on theme */}
+        <div className={`${themeStyles.container} h-20 flex items-center justify-between`}>
+          {/* Logo Brand */}
           <div className="flex items-center gap-3">
             <img 
               src={isDark ? logoDarkImg : logoImg} 
               alt="Kriscore Solutions Ltd" 
-              className="h-24 md:h-28 w-auto object-contain transition-all duration-300"
+              className="h-20 md:h-24 w-auto object-contain transition-all duration-300"
             />
           </div>
 
@@ -139,8 +141,8 @@ export default function Index() {
             ))}
           </nav>
 
-          {/* Action CTAs */}
-          <div className="flex items-center gap-4">
+          {/* Desktop Action CTAs */}
+          <div className="hidden md:flex items-center gap-4">
             {/* Theme Toggle Button */}
             <button 
               onClick={toggleTheme}
@@ -160,10 +162,80 @@ export default function Index() {
               {"Let's Talk"} <ArrowRight size={15} className="text-blue-500" />
             </a>
           </div>
+
+          {/* Mobile: Hamburger Button */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2.5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white/50 dark:bg-neutral-900/50 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors cursor-pointer text-neutral-700 dark:text-neutral-300"
+            aria-label="Toggle mobile menu"
+          >
+            {mobileMenuOpen ? (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Slide-Down Menu */}
+        <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          mobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+        } bg-white/95 dark:bg-neutral-950/95 backdrop-blur-md border-t border-neutral-200/50 dark:border-neutral-800/50`}>
+          <div className="px-6 py-5 flex flex-col gap-4">
+            {/* Mobile Nav Links */}
+            {navLinks.map((link) => (
+              <button
+                key={link}
+                onClick={() => { setActiveTab(link); setMobileMenuOpen(false); }}
+                className={`text-left text-base font-semibold py-2 border-b border-neutral-100 dark:border-neutral-800/60 ${
+                  activeTab === link
+                    ? 'text-blue-500 dark:text-blue-400'
+                    : 'text-neutral-700 dark:text-neutral-300 hover:text-blue-500 dark:hover:text-blue-400'
+                } transition-colors`}
+              >
+                {link}
+              </button>
+            ))}
+
+            {/* Mobile Bottom Actions */}
+            <div className="flex items-center justify-between pt-2">
+              {/* Theme Toggle */}
+              <button
+                onClick={toggleTheme}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 text-sm font-medium text-neutral-700 dark:text-neutral-300 transition-colors"
+                aria-label="Toggle theme"
+              >
+                {isDark ? <Sun size={16} /> : <Moon size={16} />}
+                {isDark ? 'Light Mode' : 'Dark Mode'}
+              </button>
+
+              {/* Let's Talk CTA */}
+              <a
+                href="https://calendly.com/kriscoresolutions/30min"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold rounded-xl active:scale-[0.98] transition-all inline-flex items-center gap-2"
+              >
+                {"Let's Talk"} <ArrowRight size={14} />
+              </a>
+            </div>
+          </div>
         </div>
       </header>
 
-      {activeTab !== 'About Us' && activeTab !== "Let's Talk" && (
+      {/* Products Page */}
+      {activeTab === 'Products' && (
+        <div className={themeStyles.wrapper}>
+          <ProductsIndex />
+        </div>
+      )}
+
+      {activeTab !== 'About Us' && activeTab !== "Let's Talk" && activeTab !== 'Products' && (
         <>
           {/* 2. Hero Section */}
           <section className="relative overflow-hidden pt-12 pb-24 md:pt-20 md:pb-32">
@@ -329,36 +401,36 @@ export default function Index() {
                 <div className="space-y-3">
                   {/* PayEase */}
                   <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/8 hover:border-blue-500/40 hover:bg-white/10 transition-all duration-300 group">
-                    <div className="w-10 h-10 rounded-lg bg-blue-700 flex items-center justify-center shrink-0">
-                      <span className="text-white font-extrabold text-sm">P</span>
+                    <div className="w-24 h-24 rounded-lg overflow-hidden shrink-0">
+                      <img src={payeaseMockup} alt="PayEase logo" className="w-full h-full object-contain" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-bold text-white">PayEase</p>
-                      <p className="text-xs text-neutral-400 truncate">Seamless digital payment platform for everyone.</p>
+                      <p className="text-xs text-neutral-400 truncate">PayEase is a digital payments and VTU platform that lets users fund a wallet, purchase airtime and data, pay utility bills, and manage everyday digital payments from one place.</p>
                     </div>
                     <ArrowRight size={14} className="text-neutral-600 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all shrink-0" />
                   </div>
 
                   {/* HomeLink */}
                   <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/8 hover:border-blue-500/40 hover:bg-white/10 transition-all duration-300 group">
-                    <div className="w-10 h-10 rounded-lg bg-emerald-700 flex items-center justify-center shrink-0">
-                      <span className="text-white font-extrabold text-sm">H</span>
+                    <div className="w-24 h-24 rounded-lg overflow-hidden shrink-0">
+                      <img src={homeMockup} alt="HomeLink logo" className="w-full h-full object-contain" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-bold text-white">HomeLink</p>
-                      <p className="text-xs text-neutral-400 truncate">Smart task management for teams & individuals.</p>
+                      <p className="text-xs text-neutral-400 truncate">Homelink is a digital property management and investment platform that connects diaspora investors with verified developers, contractors, and financial services, allowing them to manage construction projects remotely with complete transparency.</p>
                     </div>
                     <ArrowRight size={14} className="text-neutral-600 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all shrink-0" />
                   </div>
 
                   {/* ClinicPlus */}
                   <div className="flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/8 hover:border-blue-500/40 hover:bg-white/10 transition-all duration-300 group">
-                    <div className="w-10 h-10 rounded-lg bg-indigo-700 flex items-center justify-center shrink-0">
-                      <span className="text-white font-extrabold text-sm">C</span>
+                    <div className="w-24 h-24 rounded-lg overflow-hidden shrink-0">
+                      <img src={clinicMockup} alt="ClinicPlus logo" className="w-full h-full object-contain" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-bold text-white">ClinicPlus</p>
-                      <p className="text-xs text-neutral-400 truncate">Healthcare management for modern clinics.</p>
+                      <p className="text-xs text-neutral-400 truncate">ClinicPlus is a modern, cloud-based Healthcare Management System (HMS) designed to help clinics, hospitals, diagnostic centers, and medical practices streamline their daily operations from a single, intelligent platform.</p>
                     </div>
                     <ArrowRight size={14} className="text-neutral-600 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all shrink-0" />
                   </div>
@@ -370,7 +442,10 @@ export default function Index() {
                   </div>
                 </div>
 
-                <button className="text-sm font-bold text-blue-400 hover:text-blue-300 flex items-center gap-1.5 group transition-colors">
+                <button
+                  onClick={() => setActiveTab('Products')}
+                  className="text-sm font-bold text-blue-400 hover:text-blue-300 flex items-center gap-1.5 group transition-colors"
+                >
                   View All Products <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                 </button>
               </div>
