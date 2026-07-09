@@ -216,7 +216,7 @@ export default function ProductsIndex() {
 
             {/* CTA Button */}
             <a
-              href="https://calendly.com/kriscoresolutions/30min"
+              href={import.meta.env.VITE_CALENDLY_URL}
               target="_blank"
               rel="noreferrer"
               className="group relative shrink-0 inline-flex items-center gap-2 px-6 py-2.5 bg-white text-blue-700 font-bold text-sm rounded-xl shadow-lg shadow-blue-900/30 hover:shadow-blue-900/50 hover:scale-[1.04] active:scale-[0.97] transition-all duration-200"

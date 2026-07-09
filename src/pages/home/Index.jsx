@@ -34,6 +34,52 @@ import AboutIndex from '../about/Index'
 import TalkIndex from '../talk/Index'
 import ProductsIndex from '../products/Index'
 
+
+function FaqSection({ faqs, themeStyles }) {
+  const [openIndex, setOpenIndex] = useState(null)
+  const toggle = (i) => setOpenIndex(openIndex === i ? null : i)
+
+  return (
+    <section id="faq" className={themeStyles.sectionPadding}>
+      <div className={themeStyles.container}>
+        <div className="text-center max-w-2xl mx-auto mb-12 space-y-4">
+          <span className={themeStyles.badge}>FAQ</span>
+          <h2 className={themeStyles.h2}>Frequently Asked Questions</h2>
+          <p className={themeStyles.body}>
+            Everything you need to know before we get started.
+          </p>
+        </div>
+        <div className="max-w-3xl mx-auto space-y-3">
+          {faqs.map((faq, i) => (
+            <div
+              key={i}
+              className="backdrop-blur-xl bg-white/60 dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/80 rounded-2xl overflow-hidden transition-all duration-300"
+            >
+              <button
+                onClick={() => toggle(i)}
+                className="w-full px-6 py-5 flex items-center justify-between text-left font-semibold text-sm text-neutral-800 dark:text-neutral-100 hover:bg-neutral-100/50 dark:hover:bg-neutral-800/30 transition-all cursor-pointer gap-4"
+              >
+                <span>{faq.q}</span>
+                <span className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center border transition-all duration-300 ${openIndex === i ? 'bg-blue-600 border-blue-600 text-white rotate-45' : 'border-neutral-300 dark:border-neutral-700 text-neutral-400'}`}>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                    <line x1="6" y1="2" x2="6" y2="10"/>
+                    <line x1="2" y1="6" x2="10" y2="6"/>
+                  </svg>
+                </span>
+              </button>
+              <div className={`transition-all duration-300 ease-in-out overflow-hidden ${openIndex === i ? 'max-h-96' : 'max-h-0'}`}>
+                <p className="px-6 pb-5 text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed border-t border-neutral-200/50 dark:border-neutral-800/50 pt-4">
+                  {faq.a}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 const WORDS = [
   "Modern World",
   "Future",
@@ -94,8 +140,8 @@ export default function Index() {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else if (activeTab === 'Services') {
       document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
-    } else if (activeTab === 'Our Work') {
-      document.getElementById('our-work')?.scrollIntoView({ behavior: 'smooth' })
+    } else if (activeTab === 'FAQ') {
+      document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' })
     } else if (activeTab === 'Contact') {
       document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
     }
@@ -103,7 +149,7 @@ export default function Index() {
 
   const toggleTheme = () => setIsDark(!isDark)
 
-  const navLinks = ['Home', 'About Us', 'Services', 'Our Work',  'Contact']
+  const navLinks = ['Home', 'About Us', 'Services', 'FAQ', 'Contact']
 
   return (
     <div className={themeStyles.wrapper}>
@@ -154,7 +200,7 @@ export default function Index() {
 
             {/* Let's Talk CTA */}
             <a 
-              href="https://calendly.com/kriscoresolutions/30min"
+              href={import.meta.env.VITE_CALENDLY_URL}
               target="_blank"
               rel="noreferrer"
               className="px-5 py-2.5 border border-neutral-300 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900/60 text-sm font-semibold rounded-xl active:scale-[0.98] transition-all cursor-pointer inline-flex items-center justify-center gap-2"
@@ -215,7 +261,7 @@ export default function Index() {
 
               {/* Let's Talk CTA */}
               <a
-                href="https://calendly.com/kriscoresolutions/30min"
+                href={import.meta.env.VITE_CALENDLY_URL}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => setMobileMenuOpen(false)}
@@ -247,13 +293,13 @@ export default function Index() {
         {/* Accent blue orb — top right behind mockup */}
         <div className="glow-drift absolute top-10 right-10 w-[400px] h-[400px] bg-cyan-500/20 dark:bg-blue-500/20 rounded-full blur-[80px] pointer-events-none" style={{ animationDelay: '4s' }}></div>
 
-        <div className={`${themeStyles.container} grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center`}>
+        <div className={`${themeStyles.container} grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start`}>
           {/* Hero Left Content */}
           <div className="lg:col-span-5 space-y-8 text-center lg:text-left z-10">
             <span className="text-[11px] font-extrabold tracking-widest uppercase text-blue-600 dark:text-blue-500 block">
               WELCOME TO KRISCORE
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.1] mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.1] mb-6 min-h-[5.5em] sm:min-h-[3.5em] lg:min-h-[3.5em]">
               Building Digital Solutions for the{' '}
               <span className={`bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-500 dark:to-cyan-400 bg-clip-text text-transparent block sm:inline-block pb-3 -mb-3 transition-all duration-500 ease-out transform ${fadeProp}`}>
                 {WORDS[wordIndex]}
@@ -265,17 +311,17 @@ export default function Index() {
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
               <button 
                 onClick={() => setActiveTab('Services')}
-                className={themeStyles.btnPrimary}
+                className="px-6 py-3 border border-neutral-300 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900/60 font-semibold rounded-xl active:scale-[0.98] transition-all cursor-pointer inline-flex items-center justify-center gap-2"
               >
                 Our Services <ArrowRight size={18} />
               </button>
               <a 
-                href="https://calendly.com/kriscoresolutions/30min"
+                href={import.meta.env.VITE_CALENDLY_URL}
                 target="_blank"
                 rel="noreferrer"
-                className="px-6 py-3 border border-neutral-300 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-900/60 font-semibold rounded-xl active:scale-[0.98] transition-all cursor-pointer inline-flex items-center justify-center gap-2"
+                className={themeStyles.btnPrimary}
               >
-                Contact Us
+                Book Strategy Call
               </a>
             </div>
 
@@ -444,7 +490,7 @@ export default function Index() {
 
                 <button
                   onClick={() => setActiveTab('Products')}
-                  className="text-sm font-bold text-blue-400 hover:text-blue-300 flex items-center gap-1.5 group transition-colors"
+                  className="text-sm font-bold text-blue-400 hover:text-blue-300 flex items-center gap-1.5 group transition-colors cursor-pointer"
                 >
                   View All Products <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
                 </button>
@@ -485,7 +531,36 @@ export default function Index() {
         </div>
       </section>
 
-      {/* 6. Call to Action / Contact Banner */}
+      {/* 6. FAQ Section */}
+      {(() => {
+        const faqs = [
+          {
+            q: 'How long does a project typically take?',
+            a: 'Most projects are completed within 6–10 weeks, from the initial discovery session through to launch. More complex projects that involve in-depth strategy, custom functionality, or extensive copywriting typically take 12–16 weeks. Our focus is on delivering exceptional quality and attention to detail, so we prioritize getting it right over rushing the process.'
+          },
+          {
+            q: 'What does a website project typically cost?',
+            a: 'Our website projects typically start at $2,500 and can exceed $80,000, depending on the project\'s scope, strategic requirements, custom features, and overall technical complexity. During our initial strategy session, we\'ll discuss your goals, requirements, and the investment needed to bring your vision to life.'
+          },
+          {
+            q: 'Do you provide copywriting and messaging services?',
+            a: 'Absolutely. Clear, compelling messaging is a key part of every project we deliver. We help define your brand positioning, develop a strong value proposition, and create persuasive, conversion-focused copy that connects with your audience and supports your business goals.'
+          },
+          {
+            q: 'Can you redesign an existing website?',
+            a: 'Absolutely. Many of our clients come to us with websites that no longer represent their brand, business goals, or growth. We go beyond visual improvements by rethinking the site\'s strategy, user experience, performance, and functionality to create a modern, high-performing website built for long-term success.'
+          },
+          {
+            q: 'Do you provide ongoing support after launch?',
+            a: 'Yes. We offer ongoing support and maintenance plans to keep your website secure, up to date, and performing at its best. Our services include content updates, performance optimization, security monitoring, technical maintenance, and continuous improvements to help your website grow alongside your business.'
+          }
+        ]
+        return (
+          <FaqSection faqs={faqs} themeStyles={themeStyles} />
+        )
+      })()}
+
+      {/* 7. Call to Action / Contact Banner */}
       <section id="contact" className={themeStyles.sectionPadding}>
         <div className={themeStyles.container}>
           <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-neutral-900 to-indigo-950 text-white p-8 md:p-16 shadow-2xl">
@@ -504,7 +579,7 @@ export default function Index() {
                 </p>
                 <div className="pt-2">
                   <a 
-                    href="https://calendly.com/kriscoresolutions/30min"
+                    href={import.meta.env.VITE_CALENDLY_URL}
                     target="_blank"
                     rel="noreferrer"
                     className="px-6 py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl shadow-lg active:scale-98 transition-all cursor-pointer inline-flex items-center justify-center gap-2"
@@ -516,26 +591,51 @@ export default function Index() {
 
               {/* Direct Contacts Block */}
               <div className="lg:col-span-5 space-y-6 bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-md">
-                <div className="flex items-center gap-4">
+                <a
+                  href="mailto:hello@kriscoresolutions.com"
+                  className="flex items-center gap-4 group cursor-pointer"
+                >
                   <div className="w-10 h-10 bg-cyan-400/10 rounded-lg flex items-center justify-center text-cyan-400">
                     <Mail size={18} />
                   </div>
                   <div>
                     <p className="text-xs text-neutral-400 uppercase tracking-widest">Email Us</p>
-                    <a href="mailto:hello@kriscoresolutions.com" className="text-sm font-semibold hover:underline">
+                    <span className="text-sm font-semibold group-hover:text-cyan-400 transition-colors">
                       hello@kriscoresolutions.com
-                    </a>
+                    </span>
                   </div>
-                </div>
+                </a>
 
-                <div className="flex items-center gap-4">
+                <a
+                  href="tel:+2348084556760"
+                  className="flex items-center gap-4 group cursor-pointer"
+                >
                   <div className="w-10 h-10 bg-cyan-400/10 rounded-lg flex items-center justify-center text-cyan-400">
                     <Phone size={18} />
                   </div>
                   <div>
                     <p className="text-xs text-neutral-400 uppercase tracking-widest">Call Us</p>
-                    <a href="tel:+2349031234567" className="text-sm font-semibold hover:underline">
-                      +234 905 628 8890
+                    <span className="text-sm font-semibold  group-hover:text-cyan-400 transition-colors">
+                      +234 808 455 6760
+                    </span>
+                  </div>
+                </a>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-green-500/10 rounded-lg flex items-center justify-center text-green-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs text-neutral-400 uppercase tracking-widest">WhatsApp</p>
+                    <a
+                      href="https://wa.me/2348084556760?text=Hello%2C%20I%20would%20like%20to%20inquire%20about"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-sm font-semibold hover:text-cyan-400 transition-colors"
+                    >
+                      WhatsApp Us
                     </a>
                   </div>
                 </div>

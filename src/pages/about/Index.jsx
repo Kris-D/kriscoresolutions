@@ -78,7 +78,7 @@ export default function AboutIndex() {
       role: 'Head of Product Design',
       bio: 'Creative lead specializing in dynamic, interactive user interfaces and human-centered design systems.',
       avatarUrl: uxImg,
-      socials: { linkedin: 'https://www.linkedin.com/in/gift-gyok-7385a31a5/', twitter: 'https://x.com/GiftGyok', github: '#' }
+      socials: { linkedin: 'https://www.linkedin.com/in/gift-gyok-7385a31a5/', twitter: 'https://x.com/GiftGyok', behance: 'https://www.behance.net/giftgyok' }
     },
     {
       name: 'IJ Olise',
@@ -360,15 +360,31 @@ export default function AboutIndex() {
                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                       </svg>
                     </a>
-                    <a 
-                      href={member.socials.github} 
-                      className="text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors"
-                      aria-label={`${member.name}'s GitHub`}
-                    >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-                        <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/>
-                      </svg>
-                    </a>
+                    {member.socials.behance ? (
+                      <a
+                        href={member.socials.behance}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-neutral-400 hover:text-[#1769ff] transition-colors"
+                        aria-label={`${member.name}'s Behance`}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                          <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 1.2.836 1.891 2.024 1.891.93 0 1.566-.465 1.734-1.18l2-.002zm-5.806-8.124c-1.951 0-2.595 1.065-2.76 1.979h5.299c-.136-.92-.799-1.979-2.539-1.979zM6 19H0V5h6.232c2.196 0 4.193.96 4.193 3.584 0 1.429-.827 2.385-2.021 2.803C9.91 11.73 11 12.74 11 14.573 11 17.421 8.866 19 6 19zm-1.5-8.5h1.321c.882 0 1.679-.326 1.679-1.357 0-.951-.69-1.143-1.548-1.143H4.5V10.5zm0 5h1.513c1.054 0 1.987-.289 1.987-1.486 0-1.154-1.01-1.514-2.02-1.514H4.5V15.5z"/>
+                        </svg>
+                      </a>
+                    ) : (
+                      <a 
+                        href={member.socials.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-neutral-400 hover:text-neutral-950 dark:hover:text-white transition-colors"
+                        aria-label={`${member.name}'s GitHub`}
+                      >
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                          <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/>
+                        </svg>
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
