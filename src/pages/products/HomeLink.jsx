@@ -1,5 +1,5 @@
 import React from 'react'
-import { ArrowLeft, Search, ShieldCheck, Bell, MessageCircle, Heart, CheckCircle2 } from 'lucide-react'
+import { ArrowLeft, Search, ShieldCheck, Bell, MessageCircle, Heart, CheckCircle2, ShieldAlert, Award, Globe, DollarSign, Hammer, FileText, Settings, Users } from 'lucide-react'
 import homelinkFeatureEscrow from '../../assets/homelink_feature_escrow.png'
 import homelinkWhoItsFor from '../../assets/homelink_who_its_for.png'
 import homelinkLogo from '../../assets/homelinklogo.png'
@@ -11,111 +11,137 @@ const SvgIcon = ({ d, className = 'w-5 h-5' }) => (
   </svg>
 )
 
-/* ─── Why Choose HomeLink feature data ─── */
+/* ─── Why HomeLink feature data (3x2 grid) ─── */
 const WHY_FEATURES = [
   {
-    icon: <ShieldCheck size={22} />,
-    title: 'Verified Listings',
-    body: 'Every property on HomeLink is carefully verified. No fake listings. No outdated information. Just genuine opportunities.',
+    icon: <Award size={22} />,
+    title: 'Complete Transparency',
+    body: "Know exactly what's happening on your project at every stage with zero guesswork.",
     accent: 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400',
   },
   {
-    icon: <Search size={22} />,
-    title: 'Smart Search',
-    body: 'Powerful filters let you search by location, budget, property type, bedrooms, amenities, furnishing, and more.',
+    icon: <Globe size={22} />,
+    title: 'Built for the Diaspora',
+    body: 'Designed specifically for Africans and diasporas around the world investing in property from abroad.',
     accent: 'bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400',
   },
   {
-    icon: <MessageCircle size={22} />,
-    title: 'Direct Communication',
-    body: 'Connect directly with verified agents and property owners — ask questions, request info, and schedule inspections from within the platform.',
+    icon: <ShieldCheck size={22} />,
+    title: 'Secure Investments',
+    body: 'Protect your hard-earned funds with milestone-based secure escrow payments.',
     accent: 'bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400',
   },
   {
-    icon: <Bell size={22} />,
-    title: 'Real-Time Updates',
-    body: "Never miss a great opportunity. Get notified when new properties match your search, prices change, or listings become available.",
+    icon: <Users size={22} />,
+    title: 'Trusted Professionals',
+    body: 'Work only with carefully vetted contractors, legal experts, surveyors, and suppliers.',
     accent: 'bg-lime-50 dark:bg-lime-900/20 text-lime-600 dark:text-lime-400',
   },
   {
-    icon: <Heart size={22} />,
-    title: 'Save Your Favorites',
-    body: "Found something you love? Save listings to your favorites and compare properties whenever you're ready to decide.",
+    icon: <Settings size={22} />,
+    title: 'Remote Management',
+    body: 'Oversee and coordinate your property project from anywhere in the world.',
     accent: 'bg-rose-50 dark:bg-rose-900/20 text-rose-600 dark:text-rose-400',
   },
   {
-    icon: <CheckCircle2 size={22} />,
-    title: 'Secure Experience',
-    body: 'HomeLink is built with modern security standards to protect your personal information and provide a trustworthy real estate experience.',
+    icon: <DollarSign size={22} />,
+    title: 'Passive Income Opportunities',
+    body: 'Transform completed properties into active income-generating assets through short-term rentals.',
     accent: 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400',
   },
 ]
 
-/* ─── Features / Services data ─── */
+/* ─── Everything You Need Features list ─── */
 const FEATURES = [
   {
-    label: 'Verified Property Listings',
-    body: 'Browse thousands of carefully verified properties for sale and rent — genuine opportunities only.',
+    label: 'Verified Land & Legal Verification',
+    body: 'Before you invest, HomeLink verifies your land documents through trusted legal professionals and surveyors, ensuring the property is authentic and free from disputes.',
     iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
     iconColor: 'text-emerald-700 dark:text-emerald-300',
-    d: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+    icon: <ShieldCheck size={20} />,
   },
   {
-    label: 'Smart Search',
-    body: "Find exactly what you're looking for using powerful filters: location, budget, type, bedrooms, bathrooms, amenities, furnishing, and availability.",
+    label: 'Real-Time Construction Tracking',
+    body: 'Watch your project come to life with photo and video updates, geotagged progress reports, and milestone tracking that keeps you informed every step of the way.',
     iconBg: 'bg-teal-100 dark:bg-teal-900/30',
     iconColor: 'text-teal-700 dark:text-teal-300',
-    d: 'M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z',
+    icon: <Globe size={20} />,
   },
   {
-    label: 'Interactive Property Details',
-    body: 'Every listing includes high-quality photos, descriptions, pricing, features, nearby locations, contact info, and property specifications.',
+    label: 'Secure Escrow Payments',
+    body: 'Your money is released only after approved construction milestones are completed, giving you confidence that every payment reflects real progress.',
     iconBg: 'bg-cyan-100 dark:bg-cyan-900/30',
     iconColor: 'text-cyan-700 dark:text-cyan-300',
-    d: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',
+    icon: <DollarSign size={20} />,
   },
   {
-    label: 'Direct Communication',
-    body: 'Contact verified agents and property owners directly. Ask questions, request info, or schedule inspections — all from within the platform.',
+    label: 'Trusted Contractor Marketplace',
+    body: 'Choose from carefully vetted contractors, suppliers, and construction professionals with verified ratings based on quality, reliability, and performance.',
     iconBg: 'bg-lime-100 dark:bg-lime-900/30',
     iconColor: 'text-lime-700 dark:text-lime-300',
-    d: 'M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z',
+    icon: <Users size={20} />,
   },
   {
-    label: 'Save Your Favorites',
-    body: "Save listings you love and compare multiple properties side by side whenever you're ready.",
+    label: 'Material Sourcing',
+    body: 'Compare prices from trusted suppliers, lock in material costs, and reduce the risk of unexpected price changes during construction.',
     iconBg: 'bg-rose-100 dark:bg-rose-900/30',
     iconColor: 'text-rose-700 dark:text-rose-300',
-    d: 'M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z',
+    icon: <Hammer size={20} />,
+  },
+  {
+    label: 'Digital Property Documentation',
+    body: 'Store and access your legal documents, land records, contracts, and ownership information securely in one place.',
+    iconBg: 'bg-emerald-100 dark:bg-emerald-900/30',
+    iconColor: 'text-emerald-700 dark:text-emerald-300',
+    icon: <FileText size={20} />,
+  },
+  {
+    label: 'Turn Your Home Into an Income-Generating Asset',
+    body: 'When construction is complete, HomeLink helps you list your property on leading short-term rental platforms, connect with trusted property managers, and begin earning passive rental income.',
+    iconBg: 'bg-teal-100 dark:bg-teal-900/30',
+    iconColor: 'text-teal-700 dark:text-teal-300',
+    icon: <Award size={20} />,
+  },
+  {
+    label: 'Smart Property Management',
+    body: "Whether you're in London, Toronto, Dubai, Houston, or Sydney, HomeLink helps you oversee your property remotely with maintenance coordination, guest management, and real-time performance tracking.",
+    iconBg: 'bg-cyan-100 dark:bg-cyan-900/30',
+    iconColor: 'text-cyan-700 dark:text-cyan-300',
+    icon: <Settings size={20} />,
   },
 ]
 
-/* ─── How It Works steps ─── */
+/* ─── How HomeLink Works Steps ─── */
 const STEPS = [
   {
     num: '01',
-    title: 'Create an Account',
-    body: 'Sign up in minutes and personalize your property preferences.',
+    title: 'Verify Land',
+    body: 'Verify your land and legal documents.',
   },
   {
     num: '02',
-    title: 'Search Properties',
-    body: 'Browse verified listings using smart filters tailored to your needs.',
+    title: 'Select Partners',
+    body: 'Choose trusted contractors and building materials.',
   },
   {
     num: '03',
-    title: 'Connect',
-    body: 'Contact agents or property owners directly from within the platform.',
+    title: 'Monitor Live',
+    body: 'Monitor construction with real-time updates.',
   },
   {
     num: '04',
-    title: 'Visit',
-    body: 'Schedule inspections and explore your shortlisted properties in person.',
+    title: 'Escrow Release',
+    body: 'Approve milestone payments securely through escrow.',
   },
   {
     num: '05',
-    title: 'Move In',
-    body: 'Complete your real estate journey and move into your new home with confidence.',
+    title: 'Get Ownership',
+    body: 'Receive ownership documentation upon completion.',
+  },
+  {
+    num: '06',
+    title: 'Earn Income',
+    body: 'List your property for short-term rentals and start earning passive income.',
   },
 ]
 
@@ -136,17 +162,16 @@ export default function HomeLink({ onBack }) {
 
       {/* ═══════════════════════════════════════════════════════════
           SECTION 1 — HERO
-          Phone mockup left │ Headline + tagline right
+          Desktop app dashboard left │ Headline + tagline right
       ═══════════════════════════════════════════════════════════ */}
       <section className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* LEFT ── desktop app / browser mockup */}
           <div className="bg-[#EEF9F3] dark:bg-[#091710] rounded-3xl p-6 md:p-10 flex items-center justify-center min-h-[500px]">
-            {/* Browser Chrome Frame */}
             <div className="w-full max-w-[520px] rounded-2xl shadow-2xl overflow-hidden border border-neutral-200 dark:border-emerald-900/40 flex flex-col text-left bg-white dark:bg-[#0A1A10]">
 
-              {/* ── Browser Top Bar ── */}
+              {/* Browser Chrome Top Bar */}
               <div className="bg-neutral-100 dark:bg-[#0D1F12] px-3 py-2 flex items-center gap-2 border-b border-neutral-200 dark:border-emerald-900/30 flex-shrink-0">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-400"></span>
@@ -160,7 +185,7 @@ export default function HomeLink({ onBack }) {
                 <svg viewBox="0 0 24 24" className="w-3 h-3 fill-neutral-400 flex-shrink-0"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5S10.5 3.17 10.5 4v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
               </div>
 
-              {/* ── App Shell: Sidebar + Main ── */}
+              {/* App Shell Workspace */}
               <div className="flex flex-1 min-h-0" style={{ height: '340px' }}>
 
                 {/* Dark Green Sidebar */}
@@ -182,16 +207,14 @@ export default function HomeLink({ onBack }) {
                       <span className={`text-[4px] font-bold ${item.active ? 'text-emerald-300' : 'text-white/30'}`}>{item.label}</span>
                     </div>
                   ))}
-                  {/* bottom avatar */}
                   <div className="mt-auto mb-1 w-7 h-7 rounded-full bg-emerald-700 flex items-center justify-center">
                     <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white/80"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
                   </div>
                 </div>
 
-                {/* Main Content Area */}
+                {/* Dashboard Workspace */}
                 <div className="flex-1 bg-white dark:bg-[#0A1A10] flex flex-col overflow-hidden">
-
-                  {/* Top Header */}
+                  {/* Top Bar Header */}
                   <div className="px-3 py-2 border-b border-neutral-100 dark:border-emerald-900/20 flex justify-between items-center flex-shrink-0">
                     <div>
                       <p className="text-[8px] font-extrabold text-neutral-900 dark:text-white leading-none">Welcome back, Ayo</p>
@@ -208,10 +231,9 @@ export default function HomeLink({ onBack }) {
                     </div>
                   </div>
 
-                  {/* Scrollable Body */}
+                  {/* Widgets Area */}
                   <div className="flex-1 overflow-hidden px-3 py-2 space-y-2">
-
-                    {/* Active Property Banner */}
+                    {/* Progress Panel */}
                     <div className="bg-[#0D2818] rounded-xl p-2.5 flex justify-between items-center">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-7 rounded-lg bg-emerald-900/60 flex items-center justify-center flex-shrink-0">
@@ -234,7 +256,7 @@ export default function HomeLink({ onBack }) {
                       </div>
                     </div>
 
-                    {/* Build Phase Timeline */}
+                    {/* Progress Path */}
                     <div className="bg-neutral-50 dark:bg-[#0D1F12] rounded-xl p-2">
                       <p className="text-[6px] font-extrabold text-neutral-700 dark:text-white mb-1.5">Build Phase</p>
                       <div className="flex items-start">
@@ -264,7 +286,7 @@ export default function HomeLink({ onBack }) {
                       </div>
                     </div>
 
-                    {/* Stats Grid */}
+                    {/* Stats Widget Row */}
                     <div className="grid grid-cols-3 gap-1.5">
                       <div className="bg-neutral-50 dark:bg-[#0D1F12] rounded-xl p-2">
                         <p className="text-[5px] text-neutral-400 font-semibold">Total Escrow</p>
@@ -283,7 +305,7 @@ export default function HomeLink({ onBack }) {
                       </div>
                     </div>
 
-                    {/* Property Listings Row */}
+                    {/* Recommended Cards */}
                     <div>
                       <div className="flex justify-between items-center mb-1">
                         <p className="text-[6px] font-extrabold text-neutral-800 dark:text-white">Recommended Listings</p>
@@ -315,7 +337,6 @@ export default function HomeLink({ onBack }) {
             </div>
           </div>
 
-
           {/* RIGHT ── headline */}
           <div className="space-y-7">
             <div className="flex items-center">
@@ -329,13 +350,26 @@ export default function HomeLink({ onBack }) {
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-black leading-[1.06] tracking-tight text-neutral-950 dark:text-white">
-              Buy, Rent, Sell &amp; Discover verified properties with <span className="text-emerald-700 dark:text-emerald-400">confidence.</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-black leading-[1.1] tracking-tight text-neutral-950 dark:text-white">
+              Build and manage property back home with <span className="text-emerald-700 dark:text-emerald-400">complete transparency.</span>
             </h1>
 
-            <p className="text-base sm:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-lg">
-              HomeLink simplifies real estate with smart search, verified listings, secure communication, and an intuitive experience designed for modern living. Your next home is just a few taps away.
+            <p className="text-base sm:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-xl">
+              Distance should never stop you from investing in your future. HomeLink is the all-in-one platform that empowers Africans and diasporas around the world to securely build, own, and generate income from property in their home countries.
             </p>
+
+            {/* Core highlight pillars badges */}
+            <div className="flex flex-wrap gap-2.5 pt-2">
+              <span className="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/50 dark:border-emerald-800/40 text-emerald-800 dark:text-emerald-400 text-xs font-bold px-4 py-2 rounded-full shadow-sm">
+                🛠️ Build with confidence
+              </span>
+              <span className="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/50 dark:border-emerald-800/40 text-emerald-800 dark:text-emerald-400 text-xs font-bold px-4 py-2 rounded-full shadow-sm">
+                🏡 Own with certainty
+              </span>
+              <span className="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200/50 dark:border-emerald-800/40 text-emerald-800 dark:text-emerald-400 text-xs font-bold px-4 py-2 rounded-full shadow-sm">
+                Earn without borders
+              </span>
+            </div>
 
             <a
               href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
@@ -343,51 +377,98 @@ export default function HomeLink({ onBack }) {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-bold text-base shadow-lg transition-all duration-200 cursor-pointer"
             >
-              Get Started Free
+              Start your journey today
             </a>
           </div>
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 2 — WHY CHOOSE HOMELINK
-          Dark green full-width — 3×2 feature card grid
+          SECTION 2 — THE PROBLEM & THE SOLUTION / WHY HOMELINK
+          Dark green full-width — Problem/Solution block + Why HomeLink grid
       ═══════════════════════════════════════════════════════════ */}
-      <section className="bg-[#0B2516] dark:bg-[#060D0A] py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
+      <section className="bg-[#0B2516] dark:bg-[#060D0A] py-20 md:py-28 text-white">
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 space-y-24">
 
-          {/* Heading */}
-          <div className="max-w-2xl mb-14">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300 mb-4">Why Choose HomeLink</p>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight tracking-tight text-white">
-              Finding a property shouldn't be stressful.
-            </h2>
-            <p className="mt-4 text-base text-emerald-100/60 leading-relaxed max-w-xl">
-              HomeLink makes every step simple — giving you access to verified listings, powerful search tools, and trusted real estate professionals. Whether you're moving into your first apartment or investing in property, HomeLink helps you make smarter decisions with confidence.
-            </p>
-          </div>
-
-          {/* 3-col feature grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {WHY_FEATURES.map(({ icon, title, body, accent }) => (
-              <div
-                key={title}
-                className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-7 space-y-4 transition-colors duration-200"
-              >
-                <div className={`w-11 h-11 rounded-xl ${accent} flex items-center justify-center`}>
-                  {icon}
-                </div>
-                <h3 className="text-base font-bold text-white leading-snug">{title}</h3>
-                <p className="text-sm text-emerald-100/60 leading-relaxed">{body}</p>
+          {/* Part A: The Problem vs Solution Split */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            
+            {/* The Problem Card */}
+            <div className="bg-red-950/20 border border-red-500/10 dark:border-red-500/20 rounded-[2rem] p-8 space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="p-2 bg-red-500/10 text-red-400 rounded-xl">
+                  <ShieldAlert size={24} />
+                </span>
+                <h3 className="text-2xl font-black font-display tracking-tight text-red-200">The Problem</h3>
               </div>
-            ))}
+              <p className="text-sm sm:text-base text-red-100/70 leading-relaxed">
+                Millions of people living abroad dream of building a home back home. But distance creates uncertainty. For too long, building from abroad has depended on trust alone.
+              </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                {[
+                  'Is the land genuine?',
+                  'Is construction progressing?',
+                  'Are contractors being honest?',
+                  'Is my money spent correctly?',
+                  'How can I earn when complete?',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5 text-xs sm:text-sm text-red-200/80">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-400/80 flex-shrink-0"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* The Solution Card */}
+            <div className="bg-emerald-950/25 border border-emerald-500/20 rounded-[2rem] p-8 space-y-6">
+              <div className="flex items-center gap-3">
+                <span className="p-2 bg-emerald-500/20 text-emerald-400 rounded-xl">
+                  <ShieldCheck size={24} />
+                </span>
+                <h3 className="text-2xl font-black font-display tracking-tight text-emerald-300">The HomeLink Solution</h3>
+              </div>
+              <p className="text-sm sm:text-base text-emerald-100/80 leading-relaxed">
+                HomeLink is the first complete Build-to-Rent platform designed for diasporas. Instead of juggling layers of lawyers, surveyors, contractors, architects, property managers, and rental platforms separately, HomeLink brings everything together into one seamless experience.
+              </p>
+              <p className="text-sm text-emerald-200/90 font-medium">
+                Monitor your project, approve payments, verify milestones, receive live updates, and start earning rental income—all from your screen.
+              </p>
+            </div>
+
           </div>
+
+          {/* Part B: Why HomeLink Grid */}
+          <div className="space-y-12">
+            <div className="max-w-2xl text-left">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300 mb-3">Why HomeLink</p>
+              <h2 className="text-3xl sm:text-4xl font-black leading-tight tracking-tight text-white">
+                Everything you need to secure your future.
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {WHY_FEATURES.map(({ icon, title, body, accent }) => (
+                <div
+                  key={title}
+                  className="bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl p-7 space-y-4 transition-colors duration-200"
+                >
+                  <div className={`w-11 h-11 rounded-xl ${accent} flex items-center justify-center`}>
+                    {icon}
+                  </div>
+                  <h3 className="text-base font-bold text-white leading-snug">{title}</h3>
+                  <p className="text-sm text-emerald-100/60 leading-relaxed">{body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 3 — FEATURES (white bg, image + features list)
-          Image left │ Feature cards right
+          SECTION 3 — EVERYTHING YOU NEED IN ONE PLATFORM
+          Image left │ Rich feature list right (8 items)
       ═══════════════════════════════════════════════════════════ */}
       <section className="bg-white dark:bg-[#080D1C] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
@@ -397,29 +478,29 @@ export default function HomeLink({ onBack }) {
             <div className="rounded-3xl overflow-hidden shadow-2xl">
               <img
                 src={homelinkFeatureEscrow}
-                alt="HomeLink features in action"
-                className="w-full h-[420px] sm:h-[500px] object-cover object-center"
+                alt="HomeLink milestone-verified construction"
+                className="w-full h-[520px] sm:h-[650px] object-cover object-center"
               />
             </div>
 
             {/* RIGHT ── features */}
             <div className="space-y-8">
               <div>
-                <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-400 mb-3">Features</p>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-400 mb-3">Core Features</p>
                 <h2 className="text-3xl sm:text-4xl font-black leading-tight tracking-tight text-neutral-950 dark:text-white">
-                  Everything you need. One platform.
+                  Everything you need in one platform.
                 </h2>
               </div>
 
-              <div className="space-y-4">
-                {FEATURES.map(({ label, body, iconBg, iconColor, d }) => (
+              <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+                {FEATURES.map(({ label, body, iconBg, iconColor, icon }) => (
                   <div key={label} className="flex items-start gap-4 p-4 rounded-2xl bg-neutral-50 dark:bg-white/5 border border-neutral-100 dark:border-white/5 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-colors duration-200">
                     <div className={`w-10 h-10 rounded-xl ${iconBg} ${iconColor} flex items-center justify-center flex-shrink-0`}>
-                      <SvgIcon d={d} className="w-5 h-5" />
+                      {icon}
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-neutral-900 dark:text-white mb-0.5">{label}</h4>
-                      <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">{body}</p>
+                      <h4 className="text-sm font-bold text-neutral-900 dark:text-white mb-1 leading-snug">{label}</h4>
+                      <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">{body}</p>
                     </div>
                   </div>
                 ))}
@@ -430,33 +511,34 @@ export default function HomeLink({ onBack }) {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 4 — HOW IT WORKS (light green bg, full-width)
+          SECTION 4 — HOW IT WORKS
+          Light green bg — 6-step progress process grid
       ═══════════════════════════════════════════════════════════ */}
       <section className="bg-[#F0FAF5] dark:bg-[#0C1A0F] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
 
           {/* Heading */}
           <div className="max-w-2xl mx-auto text-center mb-16">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-400 mb-4">How It Works</p>
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-700 dark:text-emerald-400 mb-4">How HomeLink Works</p>
             <h2 className="text-3xl sm:text-4xl font-black leading-tight tracking-tight text-neutral-950 dark:text-white">
-              Your real estate journey in 5 simple steps.
+              Your property journey, structured and secure.
             </h2>
           </div>
 
-          {/* 5-column step grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+          {/* 6-column step grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-8">
             {STEPS.map(({ num, title, body }, i) => (
               <div key={num} className="relative">
                 {/* Connector line */}
                 {i < STEPS.length - 1 && (
-                  <div className="hidden lg:block absolute top-7 left-[calc(50%+28px)] right-[-50%] h-px bg-emerald-200 dark:bg-white/10" />
+                  <div className="hidden xl:block absolute top-7 left-[calc(50%+28px)] right-[-50%] h-px bg-emerald-200 dark:bg-white/10" />
                 )}
                 <div className="flex flex-col items-center text-center space-y-4">
                   <div className="w-14 h-14 rounded-full bg-emerald-700 text-white flex items-center justify-center font-black text-lg shadow-lg shadow-emerald-500/20 relative z-10">
                     {num}
                   </div>
-                  <h3 className="text-base font-bold text-neutral-900 dark:text-white">{title}</h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">{body}</p>
+                  <h3 className="text-sm sm:text-base font-bold text-neutral-900 dark:text-white leading-tight">{title}</h3>
+                  <p className="text-xs sm:text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">{body}</p>
                 </div>
               </div>
             ))}
@@ -465,31 +547,34 @@ export default function HomeLink({ onBack }) {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 5 — WHO IS HOMELINK FOR? (copy left, image right)
+          SECTION 5 — WHO IS HOMELINK FOR?
+          Target diaspora profiles left │ Lifestyle image right
       ═══════════════════════════════════════════════════════════ */}
       <section className="bg-white dark:bg-[#080D1C] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-            {/* LEFT ── copy */}
+            {/* LEFT ── target profiles checklist */}
             <div className="space-y-7 order-2 lg:order-1">
               <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black leading-tight tracking-tight text-neutral-950 dark:text-white">
-                Built for everyone in real estate.
+                Who Is HomeLink For?
               </h2>
               <p className="text-base sm:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                Whether you're a first-time renter or a seasoned property investor, HomeLink is designed to make your real estate journey effortless and confident.
+                HomeLink brings security, trust, and structural automation back home, designed specifically for property investors, builders, and professionals living abroad.
               </p>
               <ul className="space-y-3">
                 {[
-                  'Home Buyers — discover verified homes that fit your lifestyle and budget',
-                  'Renters — find apartments, houses, and short-term rentals quickly',
-                  'Property Owners — reach more buyers and tenants by listing with ease',
-                  'Real Estate Agents — showcase listings and connect with qualified clients',
-                  'Property Investors — explore opportunities with detailed market-ready listings',
+                  'Nigerians living abroad building family homes remotely',
+                  'African diasporas seeking to securely invest back home',
+                  'Families managing property construction projects from afar',
+                  'Real estate investors looking for vetted opportunities',
+                  'Vetted developers and contractors seeking qualified remote clients',
+                  'Property owners wanting to turn empty homes into short-term rental income',
+                  'Professionals planning long-term remote wealth investments',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3 text-sm sm:text-base text-neutral-700 dark:text-neutral-300">
                     <CheckCircle2 size={18} className="text-emerald-700 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
-                    {item}
+                    <span>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -499,15 +584,15 @@ export default function HomeLink({ onBack }) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-bold text-sm shadow-lg transition-all duration-200 cursor-pointer"
               >
-                Find Your Next Home
+                Find Your Path
               </a>
             </div>
 
-            {/* RIGHT ── image */}
+            {/* RIGHT ── premium lifestyle photo */}
             <div className="rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-2">
               <img
                 src={homelinkWhoItsFor}
-                alt="HomeLink — for everyone in real estate"
+                alt="HomeLink — secure diaspora property ownership"
                 className="w-full h-[420px] sm:h-[500px] object-cover object-center"
               />
             </div>
@@ -516,16 +601,17 @@ export default function HomeLink({ onBack }) {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════
-          SECTION 6 — CTA BANNER (dark green full-width)
+          SECTION 6 — CTA BANNER
+          Dark green full-width section
       ═══════════════════════════════════════════════════════════ */}
       <section className="bg-[#0B2516] dark:bg-[#060D0A] py-24">
         <div className="max-w-3xl mx-auto px-6 sm:px-10 text-center space-y-8">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">Get Started Today</p>
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-tight tracking-tight text-white">
-            Find the perfect property, connect with trusted agents, and manage your real estate journey — all from one platform.
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">Start Your Journey Today</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-black leading-tight tracking-tight text-white font-display">
+            Build Back Home With Confidence
           </h2>
           <p className="text-base text-emerald-100/60 leading-relaxed max-w-lg mx-auto">
-            Join thousands of buyers, renters, sellers, and agents who trust HomeLink to make smarter real estate decisions every day.
+            Whether you're building your dream family home or your next investment property, HomeLink provides the transparency, security, and technology you need to make it happen.
           </p>
           <a
             href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
@@ -533,7 +619,7 @@ export default function HomeLink({ onBack }) {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-white hover:bg-emerald-50 text-emerald-900 font-bold text-base shadow-2xl transition-all duration-200 cursor-pointer"
           >
-            Get Started Free
+            Start your journey today
           </a>
         </div>
       </section>
@@ -541,4 +627,3 @@ export default function HomeLink({ onBack }) {
     </div>
   )
 }
-
