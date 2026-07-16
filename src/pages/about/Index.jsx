@@ -92,23 +92,23 @@ export default function AboutIndex() {
   return (
     <div className="relative overflow-hidden">
       {/* Glow Effects for premium background aesthetics */}
-      <div className="glow-float absolute top-10 left-10 w-[600px] h-[600px] bg-blue-600/20 dark:bg-blue-600/15 rounded-full blur-[130px] pointer-events-none" style={{ animationDelay: '0s' }}></div>
-      <div className="glow-pulse absolute bottom-20 right-10 w-[500px] h-[500px] bg-indigo-500/15 dark:bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" style={{ animationDelay: '3s' }}></div>
+      <div className="glow-float absolute top-10 left-10 w-[600px] h-[600px] bg-brand-blue/20 dark:bg-brand-blue/15 rounded-full blur-[130px] pointer-events-none" style={{ animationDelay: '0s' }}></div>
+      <div className="glow-pulse absolute bottom-20 right-10 w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" style={{ animationDelay: '3s' }}></div>
 
       {/* 1. About Hero Section */}
       <section className="relative pt-20 pb-16 md:pt-28 md:pb-24">
         <div className={themeStyles.container}>
           <div className="text-center max-w-3xl mx-auto space-y-6">
-            <span className="text-[11px] font-extrabold tracking-widest uppercase text-blue-600 dark:text-blue-500 block">
+            <span className="text-[11px] font-extrabold tracking-widest uppercase text-brand-blue dark:text-brand-blue block">
               OUR MISSION & PURPOSE
             </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-neutral-900 dark:text-white leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-neutral-950 dark:text-white leading-tight font-display">
               Engineering the Future of{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-500 dark:to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-brand-blue to-cyan-500 dark:from-brand-blue dark:to-cyan-400 bg-clip-text text-transparent">
                 Digital Business
               </span>
             </h1>
-            <p className="text-neutral-600 dark:text-neutral-400 text-lg md:text-xl leading-relaxed">
+            <p className="text-neutral-600 dark:text-neutral-400 text-base sm:text-lg leading-relaxed font-normal font-sans">
               We are a dynamic tech collective that brings robust ideas to life. We specialize in planning, writing, launching, and managing software applications that help modern companies lead their industries.
             </p>
           </div>
@@ -123,9 +123,9 @@ export default function AboutIndex() {
             {/* Left: Main Statement */}
             <div className="lg:col-span-5 space-y-6">
               <span className={themeStyles.badge}>WHO WE ARE</span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950 dark:text-white leading-tight font-display">
                 More Than a{' '}
-                <span className="bg-gradient-to-r from-blue-600 to-cyan-500 dark:from-blue-500 dark:to-cyan-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-brand-blue to-cyan-500 dark:from-brand-blue dark:to-cyan-400 bg-clip-text text-transparent">
                   Software Agency
                 </span>
               </h2>
@@ -139,17 +139,17 @@ export default function AboutIndex() {
 
             {/* Right: What We Do Pillars */}
             <div className="lg:col-span-7 space-y-5">
-              <p className="text-xs font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400 mb-6">
+              <p className="text-xs font-bold uppercase tracking-widest text-brand-blue dark:text-brand-blue mb-6 font-display">
                 What We Do
               </p>
 
               {/* Pillar 1 */}
-              <div className="flex gap-5 p-5 rounded-2xl backdrop-blur-xl bg-white/60 dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/80 hover:border-blue-500/30 hover:shadow-lg transition-all duration-300 group">
-                <div className="w-12 h-12 rounded-xl bg-blue-600/10 dark:bg-blue-500/10 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <div className="flex gap-5 p-6 rounded-[1.8rem] backdrop-blur-xl bg-white/70 dark:bg-brand-dark-card/50 border border-neutral-200/40 dark:border-neutral-800/60 hover:border-brand-blue/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group">
+                <div className="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300">
                   🏢
                 </div>
                 <div className="space-y-1.5">
-                  <h3 className="text-base font-bold text-neutral-900 dark:text-white tracking-tight">
+                  <h3 className="text-lg sm:text-xl font-bold text-neutral-950 dark:text-white tracking-tight font-display">
                     Custom Software Development
                   </h3>
                   <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
@@ -159,27 +159,27 @@ export default function AboutIndex() {
               </div>
 
               {/* Pillar 2 */}
-              <div className="flex gap-5 p-5 rounded-2xl backdrop-blur-xl bg-white/60 dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/80 hover:border-blue-500/30 hover:shadow-lg transition-all duration-300 group">
-                <div className="w-12 h-12 rounded-xl bg-blue-600/10 dark:bg-blue-500/10 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <div className="flex gap-5 p-6 rounded-[1.8rem] backdrop-blur-xl bg-white/70 dark:bg-brand-dark-card/50 border border-neutral-200/40 dark:border-neutral-800/60 hover:border-brand-blue/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group">
+                <div className="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300">
                   🚀
                 </div>
                 <div className="space-y-1.5">
-                  <h3 className="text-base font-bold text-neutral-900 dark:text-white tracking-tight">
+                  <h3 className="text-lg sm:text-xl font-bold text-neutral-950 dark:text-white tracking-tight font-display">
                     Product Innovation
                   </h3>
                   <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                    Designing and launching proprietary technology products like <span className="text-blue-600 dark:text-blue-400 font-semibold">PayEase</span>, <span className="text-blue-600 dark:text-blue-400 font-semibold">HomeLink</span>, and <span className="text-blue-600 dark:text-blue-400 font-semibold">ClinicPlus</span>.
+                    Designing and launching proprietary technology products like <span className="text-brand-blue font-semibold">PayEase</span>, <span className="text-brand-blue font-semibold">HomeLink</span>, and <span className="text-brand-blue font-semibold">ClinicPlus</span>.
                   </p>
                 </div>
               </div>
 
               {/* Pillar 3 */}
-              <div className="flex gap-5 p-5 rounded-2xl backdrop-blur-xl bg-white/60 dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/80 hover:border-blue-500/30 hover:shadow-lg transition-all duration-300 group">
-                <div className="w-12 h-12 rounded-xl bg-blue-600/10 dark:bg-blue-500/10 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300">
+              <div className="flex gap-5 p-6 rounded-[1.8rem] backdrop-blur-xl bg-white/70 dark:bg-brand-dark-card/50 border border-neutral-200/40 dark:border-neutral-800/60 hover:border-brand-blue/20 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group">
+                <div className="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform duration-300">
                   ⚡
                 </div>
                 <div className="space-y-1.5">
-                  <h3 className="text-base font-bold text-neutral-900 dark:text-white tracking-tight">
+                  <h3 className="text-lg sm:text-xl font-bold text-neutral-950 dark:text-white tracking-tight font-display">
                     Long-Term Technology Partnership
                   </h3>
                   <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
@@ -200,15 +200,15 @@ export default function AboutIndex() {
             {stats.map((st) => (
               <div 
                 key={st.label} 
-                className="backdrop-blur-xl bg-white/40 dark:bg-neutral-900/30 border border-neutral-200/50 dark:border-neutral-800/60 rounded-2xl p-6 text-center transition-all duration-300 hover:border-blue-500/20"
+                className="backdrop-blur-xl bg-white/70 dark:bg-brand-dark-card/50 border border-neutral-200/40 dark:border-neutral-800/60 rounded-[1.8rem] p-6 text-center transition-all duration-300 hover:border-brand-blue/20 hover:shadow-lg"
               >
-                <div className="text-4xl lg:text-5xl font-extrabold text-blue-600 dark:text-blue-500 mb-2">
+                <div className="text-4xl lg:text-5xl font-extrabold text-brand-blue dark:text-brand-blue-light mb-2 font-display">
                   {st.value}
                 </div>
-                <div className="text-sm font-bold text-neutral-800 dark:text-neutral-200 mb-2 tracking-wide">
+                <div className="text-sm font-bold text-neutral-850 dark:text-neutral-200 mb-2 tracking-wide font-display">
                   {st.label}
                 </div>
-                <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-sans">
                   {st.desc}
                 </p>
               </div>
@@ -218,7 +218,7 @@ export default function AboutIndex() {
       </section>
 
       {/* 3. Core Values & Mission Details */}
-      <section className={`bg-neutral-100/50 dark:bg-neutral-900/20 transition-colors duration-300 ${themeStyles.sectionPadding}`}>
+      <section className={`bg-neutral-50/50 dark:bg-brand-dark/10 transition-colors duration-300 ${themeStyles.sectionPadding} border-y border-neutral-200/40 dark:border-neutral-800/60`}>
         <div className={themeStyles.container}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Column: Big Vision Text */}
@@ -231,22 +231,22 @@ export default function AboutIndex() {
               
               <div className="space-y-4 pt-4">
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue dark:text-brand-blue-light shrink-0">
                     <Target size={18} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-neutral-900 dark:text-white text-sm">Our Focus</h4>
-                    <p className="text-xs text-neutral-500 dark:text-neutral-400">To build secure, scalable products that generate tangible enterprise value.</p>
+                    <h4 className="font-bold text-neutral-900 dark:text-white text-base font-display">Our Focus</h4>
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400 font-sans">To build secure, scalable products that generate tangible enterprise value.</p>
                   </div>
                 </div>
 
                 <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-brand-blue/10 flex items-center justify-center text-brand-blue dark:text-brand-blue-light shrink-0">
                     <Compass size={18} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-neutral-900 dark:text-white text-sm">Our Vision</h4>
-                    <p className="text-xs text-neutral-500 dark:text-neutral-400">{"To become the world's most trusted partner for end-to-end digital engineering."}</p>
+                    <h4 className="font-bold text-neutral-900 dark:text-white text-base font-display">Our Vision</h4>
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400 font-sans">{"To become the world's most trusted partner for end-to-end digital engineering."}</p>
                   </div>
                 </div>
               </div>
@@ -256,11 +256,11 @@ export default function AboutIndex() {
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
               {values.map((v) => (
                 <div key={v.title} className={themeStyles.card}>
-                  <div className="w-10 h-10 rounded-xl bg-blue-600/10 dark:bg-blue-500/10 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-brand-blue/10 dark:bg-brand-blue/20 flex items-center justify-center text-brand-blue dark:text-brand-blue-light mb-4">
                     <v.icon size={20} />
                   </div>
-                  <h3 className="text-base font-bold text-neutral-900 dark:text-white mb-2">{v.title}</h3>
-                  <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">{v.desc}</p>
+                  <h3 className="text-lg sm:text-xl font-bold text-neutral-950 dark:text-white mb-2 font-display">{v.title}</h3>
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-sans">{v.desc}</p>
                 </div>
               ))}
             </div>
@@ -283,16 +283,16 @@ export default function AboutIndex() {
             {milestones.map((m) => (
               <div key={m.year} className="relative group">
                 {/* Timeline Dot Indicator */}
-                <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-2 border-blue-500 bg-white dark:bg-neutral-950 group-hover:scale-125 transition-transform duration-200 shadow-sm"></div>
+                <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full border-2 border-brand-blue dark:border-brand-blue-light bg-white dark:bg-brand-dark group-hover:scale-125 transition-transform duration-200 shadow-sm"></div>
                 
                 <div className="space-y-2">
-                  <span className="text-xs font-bold text-blue-600 dark:text-blue-400 bg-blue-600/10 dark:bg-blue-500/10 px-2 py-0.5 rounded">
+                  <span className="text-xs font-bold text-brand-blue dark:text-brand-blue-light bg-brand-blue/10 dark:bg-brand-blue/20 px-2.5 py-0.5 rounded font-display">
                     {m.year}
                   </span>
-                  <h3 className="text-lg font-bold text-neutral-900 dark:text-white">
+                  <h3 className="text-lg font-bold text-neutral-950 dark:text-white font-display">
                     {m.title}
                   </h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-sans">
                     {m.desc}
                   </p>
                 </div>
@@ -303,7 +303,7 @@ export default function AboutIndex() {
       </section>
 
       {/* 5. Our Team Section */}
-      <section className={`bg-neutral-100/50 dark:bg-neutral-900/20 transition-colors duration-300 ${themeStyles.sectionPadding}`}>
+      <section className={`bg-neutral-50/50 dark:bg-brand-dark/10 transition-colors duration-300 ${themeStyles.sectionPadding} border-t border-neutral-200/40 dark:border-neutral-800/60`}>
         <div className={themeStyles.container}>
           <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
             <span className={themeStyles.badge}>MEET THE MINDS</span>
@@ -317,7 +317,7 @@ export default function AboutIndex() {
             {team.map((member) => (
               <div 
                 key={member.name} 
-                className="backdrop-blur-xl bg-white/70 dark:bg-neutral-900/40 border border-neutral-200/50 dark:border-neutral-800/80 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group"
+                className="backdrop-blur-xl bg-white/70 dark:bg-brand-dark-card/50 border border-neutral-200/40 dark:border-neutral-800/60 rounded-[1.8rem] overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-brand-blue/20 transition-all duration-300 flex flex-col group"
               >
                 {/* Profile Pic Container */}
                 <div className="h-64 overflow-hidden relative bg-neutral-200 dark:bg-neutral-800">
@@ -328,7 +328,7 @@ export default function AboutIndex() {
                     className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
-                  <span className="absolute bottom-4 left-4 bg-blue-600 text-white text-[10px] font-extrabold tracking-widest uppercase px-2.5 py-1 rounded shadow-md z-20">
+                  <span className="absolute bottom-4 left-4 bg-brand-blue text-white text-[9px] font-extrabold tracking-widest uppercase px-2.5 py-1.5 rounded-full shadow-lg z-20 font-display">
                     {member.role}
                   </span>
                 </div>
@@ -336,8 +336,8 @@ export default function AboutIndex() {
                 {/* Profile Details */}
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div className="space-y-2 mb-6">
-                    <h3 className="text-lg font-bold text-neutral-900 dark:text-white tracking-tight">{member.name}</h3>
-                    <p className="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed font-normal">{member.bio}</p>
+                    <h3 className="text-lg font-bold text-neutral-950 dark:text-white tracking-tight font-display">{member.name}</h3>
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed font-normal font-sans">{member.bio}</p>
                   </div>
 
                   {/* Profile Socials */}
