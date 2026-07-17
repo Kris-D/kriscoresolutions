@@ -660,7 +660,7 @@ export default function Index() {
             <div className={`${themeStyles.container} grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start`}>
           {/* Hero Left Content */}
           <div className="lg:col-span-5 space-y-8 text-center lg:text-left z-10">
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.1] mb-6 min-h-[5.5em] sm:min-h-[3.5em] lg:min-h-[3.5em] font-display">
+            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.1] mb-6 min-h-[3.6em] sm:min-h-[2.8em] lg:min-h-[2.8em] font-display">
               Building Digital Solutions for the{' '}
               <span className={`text-brand-blue dark:text-brand-blue-light block sm:inline-block pb-3 -mb-3 transition-all duration-500 ease-out transform ${fadeProp}`}>
                 {WORDS[wordIndex]}
