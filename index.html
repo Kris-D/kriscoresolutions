@@ -7,6 +7,24 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kriscore Solutions Ltd</title>
+    <style>
+      html {
+        background-color: #FAFAFA;
+      }
+      html.dark {
+        background-color: #050B1B;
+      }
+    </style>
+    <script>
+      (function() {
+        const saved = localStorage.getItem('kriscore_theme');
+        if (saved === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

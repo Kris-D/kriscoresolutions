@@ -91,9 +91,7 @@ export default function AboutIndex() {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Glow Effects for premium background aesthetics */}
-      <div className="glow-float absolute top-10 left-10 w-[600px] h-[600px] bg-brand-blue/20 dark:bg-brand-blue/15 rounded-full blur-[130px] pointer-events-none" style={{ animationDelay: '0s' }}></div>
-      <div className="glow-pulse absolute bottom-20 right-10 w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none" style={{ animationDelay: '3s' }}></div>
+
 
       {/* 1. About Hero Section */}
       <section className="relative pt-20 pb-16 md:pt-28 md:pb-24">
@@ -104,7 +102,7 @@ export default function AboutIndex() {
             </span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-neutral-950 dark:text-white leading-tight font-display">
               Engineering the Future of{' '}
-              <span className="bg-gradient-to-r from-brand-blue to-cyan-500 dark:from-brand-blue dark:to-cyan-400 bg-clip-text text-transparent">
+              <span className="text-brand-blue dark:text-brand-blue-light">
                 Digital Business
               </span>
             </h1>
@@ -125,7 +123,7 @@ export default function AboutIndex() {
               <span className={themeStyles.badge}>WHO WE ARE</span>
               <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-950 dark:text-white leading-tight font-display">
                 More Than a{' '}
-                <span className="bg-gradient-to-r from-brand-blue to-cyan-500 dark:from-brand-blue dark:to-cyan-400 bg-clip-text text-transparent">
+                <span className="text-brand-blue dark:text-brand-blue-light">
                   Software Agency
                 </span>
               </h2>

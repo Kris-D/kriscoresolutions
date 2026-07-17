@@ -1,4 +1,4 @@
-﻿import { 
+import { 
   ArrowLeft,
   MessageSquare,
   Smartphone
@@ -28,11 +28,11 @@ export default function MobileApp({ setActiveTab }) {
     },
     {
       title: 'Hybrid Mobile App Development',
-      description: 'Work with us to develop versatile hybrid apps that combine native performance with cross-platform flexibility, offering the best of both worlds for your users.'
+      description: 'Work with us to develop versatile hybrid apps that combine native performance with cross platform flexibility, offering the best of both worlds for your users.'
     },
     {
       title: 'App Store & Play Store Launch',
-      description: 'We handle the full deployment process — submission, compliance, metadata optimization, and launch — so your app reaches users smoothly on day one.'
+      description: 'We handle the full deployment process, including submission, compliance, metadata optimization, and launch, so your app reaches users smoothly on day one.'
     }
   ]
 

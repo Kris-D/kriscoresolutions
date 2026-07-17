@@ -28,7 +28,7 @@ const WHY_FEATURES = [
   {
     icon: <ShieldCheck size={22} />,
     title: 'Secure Investments',
-    body: 'Protect your hard-earned funds with milestone-based secure escrow payments.',
+    body: 'Protect your hard-earned funds with milestone based secure escrow payments.',
     accent: 'bg-cyan-50 dark:bg-cyan-900/20 text-cyan-600 dark:text-cyan-400',
   },
   {
@@ -46,7 +46,7 @@ const WHY_FEATURES = [
   {
     icon: <DollarSign size={22} />,
     title: 'Passive Income Opportunities',
-    body: 'Transform completed properties into active income-generating assets through short-term rentals.',
+    body: 'Transform completed properties into active income generating assets through short term rentals.',
     accent: 'bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400',
   },
 ]
@@ -61,7 +61,7 @@ const FEATURES = [
     icon: <ShieldCheck size={20} />,
   },
   {
-    label: 'Real-Time Construction Tracking',
+    label: 'Real Time Construction Tracking',
     body: 'Watch your project come to life with photo and video updates, geotagged progress reports, and milestone tracking that keeps you informed every step of the way.',
     iconBg: 'bg-teal-100 dark:bg-teal-900/30',
     iconColor: 'text-teal-700 dark:text-teal-300',
@@ -96,15 +96,15 @@ const FEATURES = [
     icon: <FileText size={20} />,
   },
   {
-    label: 'Turn Your Home Into an Income-Generating Asset',
-    body: 'When construction is complete, HomeLink helps you list your property on leading short-term rental platforms, connect with trusted property managers, and begin earning passive rental income.',
+    label: 'Turn Your Home Into an Income Generating Asset',
+    body: 'When construction is complete, HomeLink helps you list your property on leading short term rental platforms, connect with trusted property managers, and begin earning passive rental income.',
     iconBg: 'bg-teal-100 dark:bg-teal-900/30',
     iconColor: 'text-teal-700 dark:text-teal-300',
     icon: <Award size={20} />,
   },
   {
     label: 'Smart Property Management',
-    body: "Whether you're in London, Toronto, Dubai, Houston, or Sydney, HomeLink helps you oversee your property remotely with maintenance coordination, guest management, and real-time performance tracking.",
+    body: "Whether you're in London, Toronto, Dubai, Houston, or Sydney, HomeLink helps you oversee your property remotely with maintenance coordination, guest management, and real time performance tracking.",
     iconBg: 'bg-cyan-100 dark:bg-cyan-900/30',
     iconColor: 'text-cyan-700 dark:text-cyan-300',
     icon: <Settings size={20} />,
@@ -145,7 +145,7 @@ const STEPS = [
   },
 ]
 
-export default function HomeLink({ onBack }) {
+export default function HomeLink({ onBack, setActiveTab }) {
   return (
     <div className="min-h-screen bg-white dark:bg-[#080D1C] text-neutral-900 dark:text-white transition-colors duration-300">
 
@@ -153,7 +153,7 @@ export default function HomeLink({ onBack }) {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-8 pb-2">
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 dark:text-emerald-400 hover:opacity-75 cursor-pointer transition-opacity"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue dark:text-brand-blue-light hover:opacity-75 cursor-pointer transition-opacity"
         >
           <ArrowLeft size={16} />
           Back to Product
@@ -244,7 +244,7 @@ export default function HomeLink({ onBack }) {
                             <p className="text-[7px] font-extrabold text-white">Greenview Villa</p>
                             <span className="text-[5px] bg-emerald-500/30 text-emerald-300 px-1 py-0.5 rounded font-bold">Active</span>
                           </div>
-                          <p className="text-[5.5px] text-white/50 mt-0.5">Lekki, Lagos · HLK-2024-0768</p>
+                          <p className="text-[5.5px] text-white/50 mt-0.5">Lekki, Lagos · HLK 2024 0768</p>
                         </div>
                       </div>
                       <div className="text-right">
@@ -313,8 +313,8 @@ export default function HomeLink({ onBack }) {
                       </div>
                       <div className="grid grid-cols-2 gap-1.5">
                         {[
-                          { name: '3-Bed Apartment', loc: 'Ikoyi, Lagos', price: '₦8.5M', tag: 'For Sale', tagColor: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300' },
-                          { name: '2-Bed Flat',      loc: 'VI, Lagos',   price: '₦450K/yr', tag: 'For Rent', tagColor: 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300' },
+                          { name: '3 Bed Apartment', loc: 'Ikoyi, Lagos', price: '₦8.5M', tag: 'For Sale', tagColor: 'bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-300' },
+                          { name: '2 Bed Flat',      loc: 'VI, Lagos',   price: '₦450K/yr', tag: 'For Rent', tagColor: 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300' },
                         ].map((listing) => (
                           <div key={listing.name} className="bg-neutral-50 dark:bg-[#0D1F12] rounded-lg p-1.5 border border-neutral-100 dark:border-emerald-900/20">
                             <div className="w-full h-8 bg-emerald-900/20 dark:bg-emerald-900/30 rounded-md mb-1 flex items-center justify-center">
@@ -355,7 +355,7 @@ export default function HomeLink({ onBack }) {
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-xl">
-              Distance should never stop you from investing in your future. HomeLink is the all-in-one platform that empowers Africans and diasporas around the world to securely build, own, and generate income from property in their home countries.
+              Distance should never stop you from investing in your future. HomeLink is the all in one platform that empowers Africans and diasporas around the world to securely build, own, and generate income from property in their home countries.
             </p>
 
             {/* Core highlight pillars badges */}
@@ -371,14 +371,12 @@ export default function HomeLink({ onBack }) {
               </span>
             </div>
 
-            <a
-              href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-bold text-base shadow-lg transition-all duration-200 cursor-pointer"
+            <button
+              onClick={() => setActiveTab?.("Let's Talk")}
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-bold text-base shadow-lg transition-all duration-200 cursor-pointer border-0"
             >
               Start your journey today
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -432,7 +430,7 @@ export default function HomeLink({ onBack }) {
                 HomeLink is the first complete Build-to-Rent platform designed for diasporas. Instead of juggling layers of lawyers, surveyors, contractors, architects, property managers, and rental platforms separately, HomeLink brings everything together into one seamless experience.
               </p>
               <p className="text-sm text-emerald-200/90 font-medium">
-                Monitor your project, approve payments, verify milestones, receive live updates, and start earning rental income—all from your screen.
+                Monitor your project, approve payments, verify milestones, receive live updates, and start earning rental income, all from your screen.
               </p>
             </div>
 
@@ -578,21 +576,19 @@ export default function HomeLink({ onBack }) {
                   </li>
                 ))}
               </ul>
-              <a
-                href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-bold text-sm shadow-lg transition-all duration-200 cursor-pointer"
+              <button
+                onClick={() => setActiveTab?.("Let's Talk")}
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-emerald-800 hover:bg-emerald-900 dark:bg-emerald-700 dark:hover:bg-emerald-600 text-white font-bold text-sm shadow-lg transition-all duration-200 cursor-pointer border-0"
               >
                 Find Your Path
-              </a>
+              </button>
             </div>
 
             {/* RIGHT ── premium lifestyle photo */}
             <div className="rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-2">
               <img
                 src={homelinkWhoItsFor}
-                alt="HomeLink — secure diaspora property ownership"
+                alt="HomeLink: secure diaspora property ownership"
                 className="w-full h-[420px] sm:h-[500px] object-cover object-center"
               />
             </div>
@@ -613,14 +609,12 @@ export default function HomeLink({ onBack }) {
           <p className="text-base text-emerald-100/60 leading-relaxed max-w-lg mx-auto">
             Whether you're building your dream family home or your next investment property, HomeLink provides the transparency, security, and technology you need to make it happen.
           </p>
-          <a
-            href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-white hover:bg-emerald-50 text-emerald-900 font-bold text-base shadow-2xl transition-all duration-200 cursor-pointer"
+          <button
+            onClick={() => setActiveTab?.("Let's Talk")}
+            className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-white hover:bg-emerald-50 text-emerald-900 font-bold text-base shadow-2xl transition-all duration-200 cursor-pointer border-0"
           >
             Start your journey today
-          </a>
+          </button>
         </div>
       </section>
 

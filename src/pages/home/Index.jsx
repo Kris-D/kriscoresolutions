@@ -97,15 +97,10 @@ const WORDS = [
   "Connected World",
   "Next Generation",
   "Evolving World",
-  "Global Marketplace",
   "Intelligent Era",
-  "Modern Enterprise",
-  "Innovation Economy",
   "Emerging Future",
   "New Era",
   "Digital Economy",
-  "Business Landscape",
-  "Connected Future"
 ]
 
 const TAB_TO_PATH = {
@@ -139,7 +134,15 @@ const PATH_TO_TAB = {
 }
 
 export default function Index() {
-  const [isDark, setIsDark] = useState(true)
+  const getInitialTheme = () => {
+    const saved = localStorage.getItem('kriscore_theme')
+    if (saved) {
+      return saved === 'dark'
+    }
+    return false
+  }
+
+  const [isDark, setIsDark] = useState(getInitialTheme)
 
   const getInitialTab = () => {
     const path = window.location.pathname
@@ -154,8 +157,12 @@ export default function Index() {
   }
 
   const [activeTab, setActiveTabState] = useState(getInitialTab)
+  const [previousTab, setPreviousTab] = useState('Home')
 
   const setActiveTab = (tab) => {
+    if (tab === "Let's Talk") {
+      setPreviousTab(activeTab)
+    }
     setActiveTabState(tab)
     const path = TAB_TO_PATH[tab] || '/'
     if (window.location.pathname !== path) {
@@ -206,13 +213,13 @@ export default function Index() {
   const productDropdownItems = [
     {
       title: 'PayEase',
-      tagline: 'Lightning-fast VTU & digital utility payments',
+      tagline: 'Lightning fast VTU & digital utility payments',
       tab: 'PayEase',
       logo: payeaseMockup
     },
     {
       title: 'HomeLink',
-      tagline: 'Secure property escrow & co-ownership solutions',
+      tagline: 'Secure property escrow & co ownership solutions',
       tab: 'HomeLink',
       logo: homeMockup
     },
@@ -255,7 +262,7 @@ export default function Index() {
   }, [isDark])
 
   useEffect(() => {
-    if (activeTab === 'Home' || activeTab === 'About Us' || activeTab === 'Blog' || activeTab === "Let's Talk" || activeTab === 'Product Design' || activeTab === 'Mobile App' || activeTab === 'Web Dev') {
+    if (activeTab === 'Home' || activeTab === 'About Us' || activeTab === 'Blog' || activeTab === "Let's Talk" || activeTab === 'Product Design' || activeTab === 'Mobile App' || activeTab === 'Web Dev' || activeTab === 'PayEase' || activeTab === 'HomeLink' || activeTab === 'ClinicPlus') {
       if (window.__scroll_to_products) {
         window.__scroll_to_products = false
         return
@@ -270,14 +277,19 @@ export default function Index() {
     }
   }, [activeTab])
 
-  const toggleTheme = () => setIsDark(!isDark)
+  const toggleTheme = () => {
+    const newIsDark = !isDark
+    setIsDark(newIsDark)
+    localStorage.setItem('kriscore_theme', newIsDark ? 'dark' : 'light')
+  }
 
   const navLinks = ['Products', 'Services', 'About Us', 'FAQ', 'Contact']
 
   return (
     <div className={themeStyles.wrapper}>
       {/* 1. Header / Navigation Bar */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-neutral-950/70 border-b border-neutral-200/50 dark:border-neutral-800/50 transition-colors duration-300">
+      {activeTab !== "Let's Talk" && (
+        <header className="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-neutral-950/70 border-b border-neutral-200/50 dark:border-neutral-800/50 transition-colors duration-300">
         <div className={`${themeStyles.container} h-20 flex items-center justify-between`}>
           {/* Logo Brand */}
           <div 
@@ -591,42 +603,52 @@ export default function Index() {
             </div>
           </div>
         </div>
-      </header>
+        </header>
+      )}
 
       {/* Dedicated Product Detail Pages (Figur Layout) */}
       {activeTab === 'PayEase' && (
         <div className={themeStyles.wrapper}>
-          <PayEase onBack={() => {
-            window.__scroll_to_products = true;
-            setActiveTab('Home');
-            setTimeout(() => {
-              document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-          }} />
+          <PayEase
+            onBack={() => {
+              window.__scroll_to_products = true;
+              setActiveTab('Home');
+              setTimeout(() => {
+                document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' });
+              }, 100);
+            }}
+            setActiveTab={setActiveTab}
+          />
         </div>
       )}
 
       {activeTab === 'HomeLink' && (
         <div className={themeStyles.wrapper}>
-          <HomeLink onBack={() => {
-            window.__scroll_to_products = true;
-            setActiveTab('Home');
-            setTimeout(() => {
-              document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-          }} />
+          <HomeLink
+            onBack={() => {
+              window.__scroll_to_products = true;
+              setActiveTab('Home');
+              setTimeout(() => {
+                document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' });
+              }, 100);
+            }}
+            setActiveTab={setActiveTab}
+          />
         </div>
       )}
 
       {activeTab === 'ClinicPlus' && (
         <div className={themeStyles.wrapper}>
-          <ClinicPlus onBack={() => {
-            window.__scroll_to_products = true;
-            setActiveTab('Home');
-            setTimeout(() => {
-              document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-          }} />
+          <ClinicPlus
+            onBack={() => {
+              window.__scroll_to_products = true;
+              setActiveTab('Home');
+              setTimeout(() => {
+                document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' });
+              }, 100);
+            }}
+            setActiveTab={setActiveTab}
+          />
         </div>
       )}
 
@@ -634,28 +656,18 @@ export default function Index() {
         <>
           {/* 2. Hero Section */}
           <section className="relative overflow-hidden pt-12 pb-24 md:pt-20 md:pb-32">
-        {/* === Light/Dark Mode Glow Meshes === */}
-        {/* Strong vivid blue glow — left side behind heading */}
-        <div className="glow-float absolute -top-20 -left-20 w-[700px] h-[700px] bg-brand-blue/20 dark:bg-brand-blue/15 rounded-full blur-[120px] pointer-events-none" style={{ animationDelay: '0s' }}></div>
-        {/* Soft indigo glow — bottom right */}
-        <div className="glow-pulse absolute bottom-0 right-0 w-[600px] h-[600px] bg-indigo-500/20 dark:bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" style={{ animationDelay: '2s' }}></div>
-        {/* Accent blue orb — top right behind mockup */}
-        <div className="glow-drift absolute top-10 right-10 w-[400px] h-[400px] bg-brand-blue/15 dark:bg-brand-blue/10 rounded-full blur-[80px] pointer-events-none" style={{ animationDelay: '4s' }}></div>
 
-        <div className={`${themeStyles.container} grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start`}>
+            <div className={`${themeStyles.container} grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start`}>
           {/* Hero Left Content */}
           <div className="lg:col-span-5 space-y-8 text-center lg:text-left z-10">
-            <span className="text-[11px] font-extrabold tracking-widest uppercase text-brand-blue dark:text-brand-blue-light block">
-              WELCOME TO KRISCORE
-            </span>
             <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-extrabold tracking-tight text-neutral-900 dark:text-white leading-[1.1] mb-6 min-h-[5.5em] sm:min-h-[3.5em] lg:min-h-[3.5em] font-display">
               Building Digital Solutions for the{' '}
-              <span className={`bg-gradient-to-r from-brand-blue to-cyan-500 dark:from-brand-blue dark:to-cyan-400 bg-clip-text text-transparent block sm:inline-block pb-3 -mb-3 transition-all duration-500 ease-out transform ${fadeProp}`}>
+              <span className={`text-brand-blue dark:text-brand-blue-light block sm:inline-block pb-3 -mb-3 transition-all duration-500 ease-out transform ${fadeProp}`}>
                 {WORDS[wordIndex]}
               </span>
             </h1>
             <p className={themeStyles.bodyLg}>
-              Kriscore Solutions is a software engineering and digital product company. We help organizations build custom websites, mobile apps, and enterprise systems while also creating our own innovative technology products that solve real-world problems.
+              A global technology company creating future ready software solutions for ambitious startups, growing enterprises, and visionary entrepreneurs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
               <button 
@@ -674,24 +686,6 @@ export default function Index() {
               </a>
             </div>
 
-            {/* Feature badges with distinct icons matching target design */}
-            <div className="grid grid-cols-2 gap-x-6 gap-y-5 pt-6">
-              {[
-                { label: 'Innovative Solutions', icon: Shield },
-                { label: 'Quality Assurance',    icon: CheckCircle2 },
-                { label: 'Scalable Systems',     icon: TrendingUp },
-                { label: 'Reliable Support',     icon: Headphones },
-              ].map(({ label, icon: Icon }) => (
-                <div key={label} className="flex items-center gap-3 text-left">
-                  <div className="w-10 h-10 rounded-full border border-brand-blue/30 dark:border-brand-blue/20 flex items-center justify-center text-brand-blue dark:text-brand-blue-light shrink-0 bg-brand-blue/5 dark:bg-brand-blue/10 shadow-sm">
-                    <Icon size={17} strokeWidth={2} />
-                  </div>
-                  <span className="text-sm font-semibold text-neutral-800 dark:text-neutral-200 tracking-wide leading-tight">
-                    {label}
-                  </span>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Hero Right Mockup Graphics */}
@@ -745,7 +739,7 @@ export default function Index() {
                 tagline: 'Designing apps that touch Millions daily',
                 icon: Smartphone,
                 features: [
-                  'iOS & Android Cross-Platform Apps',
+                  'iOS & Android Cross Platform Apps',
                   'React Native & Native Performance',
                   'App Store & Play Store Launch',
                 ]
@@ -755,9 +749,9 @@ export default function Index() {
                 tagline: 'Shaping products that shape the future',
                 icon: Palette,
                 features: [
-                  'UI/UX Design & High-Fidelity Mockups',
+                  'UI/UX Design & High Fidelity Mockups',
                   'Interactive User Experience Prototypes',
-                  'User-Centered Design Systems',
+                  'User Centered Design Systems',
                 ]
               }
             ].map(({ title, tagline, icon: Icon, features }) => (
@@ -820,7 +814,7 @@ export default function Index() {
         <div className={themeStyles.container}>
           {/* Header */}
           <div className="max-w-2xl mb-24 space-y-4">
-            <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#7C3AED] dark:text-[#A78BFA] block">
+            <span className={themeStyles.badge}>
               OUR INNOVATIONS
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-neutral-950 dark:text-white font-display leading-tight">
@@ -836,15 +830,144 @@ export default function Index() {
           {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-start">
             
-            {/* Card 1: HomeLink */}
-            <div className="relative overflow-hidden bg-[#F0FAF5] dark:bg-[#091710] border border-emerald-500/10 dark:border-emerald-500/20 rounded-[2rem] pt-10 px-8 pb-0 shadow-sm hover:shadow-xl transition-all duration-300 group min-h-[500px] flex flex-col justify-between">
+            {/* Card 1: PayEase */}
+            <div className="relative overflow-hidden bg-[#F5F2FC] dark:bg-[#100C1F] border border-purple-500/10 dark:border-purple-500/20 rounded-[2rem] pt-10 px-8 pb-0 shadow-sm hover:shadow-xl transition-all duration-300 group min-h-[500px] flex flex-col justify-between">
               
               {/* Topographic Background lines */}
-              <div className="absolute top-0 right-0 w-32 h-24 opacity-25 pointer-events-none text-emerald-500">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover">
-                  <path d="M10,10 Q30,50 60,20 T90,40" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M10,25 Q30,65 60,35 T90,55" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M10,40 Q30,80 60,50 T90,70" stroke="currentColor" strokeWidth="1.5" />
+              <div className="absolute -top-3 -right-px w-36 h-28 opacity-25 pointer-events-none text-purple-500">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+                  <path d="M0,-10 Q30,50 65,20 T105,35" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M0,0 Q30,65 65,35 T105,50" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M0,10 Q30,80 65,50 T105,65" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+              </div>
+
+              <div className="space-y-4 text-left">
+                <div className="flex items-center gap-2 mb-2">
+                  <img
+                    src={payeaseMockup}
+                    alt=""
+                    className="w-8 h-8 object-cover object-left rounded-lg dark:bg-purple-900/30 flex-shrink-0"
+                  />
+                  <span className="text-xs font-bold text-purple-600 dark:text-purple-400 block font-display">
+                    PayEase
+                  </span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold tracking-tight text-neutral-950 dark:text-white font-display leading-snug">
+                  A digital payment.
+                </h3>
+                <p className="text-sm font-normal text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                  An ecosystem built for individuals and businesses to experience seamless accessibility to everyday financial services.
+                </p>
+                <div className="pt-2">
+                  <button
+                    onClick={() => setActiveTab('PayEase')}
+                    className="text-[#7C3AED] dark:text-[#A78BFA] font-bold text-xs uppercase tracking-widest inline-flex items-center gap-1 hover:underline cursor-pointer"
+                  >
+                    LEARN MORE <ArrowRight size={12} />
+                  </button>
+                </div>
+              </div>
+
+              {/* Phone screen overflowing bottom right */}
+              <div className="relative h-[220px] w-full mt-8 flex justify-end">
+                <div className="w-[200px] h-[260px] bg-white dark:bg-[#0D0D1A] rounded-t-[1.6rem] shadow-2xl flex flex-col translate-x-4 translate-y-3 group-hover:translate-y-0.5 transition-transform duration-500 text-left relative z-10 overflow-hidden border border-neutral-200/50 dark:border-neutral-800/30">
+                  
+                  {/* ===== PURPLE HEADER ===== */}
+                  <div className="bg-gradient-to-br from-[#8B3CF7] via-[#7C3AED] to-[#6D28D9] px-3 pt-2 pb-3 flex flex-col gap-1.5">
+                    {/* Status Bar */}
+                    <div className="flex justify-between items-center text-white">
+                      <span className="text-[6.5px] font-bold font-mono">9:41</span>
+                      <div className="flex items-center gap-0.5">
+                        <div className="flex items-end gap-[1px]">
+                          <span className="w-[1.5px] h-[3px] bg-white rounded-sm"></span>
+                          <span className="w-[1.5px] h-[4px] bg-white rounded-sm"></span>
+                          <span className="w-[1.5px] h-[5px] bg-white rounded-sm"></span>
+                          <span className="w-[1.5px] h-[6px] bg-white rounded-sm"></span>
+                        </div>
+                        <svg width="8" height="6" viewBox="0 0 10 8" fill="white" className="mx-0.5"><path d="M5 6.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM1.5 3.5C2.7 2.3 3.8 1.5 5 1.5s2.3.8 3.5 2l1-1C8.1 1.1 6.6 0 5 0S1.9 1.1.5 2.5l1 1zm1.5 1.5C3.7 4.3 4.3 4 5 4s1.3.3 2 1l1-1C7.1 3.1 6.1 2.5 5 2.5S2.9 3.1 2 4l1 1z"/></svg>
+                        <div className="flex items-center gap-[1px]">
+                          <div className="w-3.5 h-1.5 rounded-[2px] border border-white relative overflow-hidden">
+                            <div className="absolute inset-[1px] bg-white rounded-sm"></div>
+                          </div>
+                          <div className="w-[1px] h-1 bg-white rounded-r-sm"></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Profile Row */}
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-5 h-5 rounded-full bg-[#4C1D95] border-2 border-white/30 overflow-hidden flex items-center justify-center flex-shrink-0">
+                          <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white/80"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+                        </div>
+                        <div className="leading-none">
+                          <span className="text-[5.5px] text-white/80 font-medium block">Welcome Back</span>
+                          <span className="text-[8px] font-extrabold text-white block">Kris4</span>
+                        </div>
+                      </div>
+                      <div className="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center border border-white/20">
+                        <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 fill-white"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5S10.5 3.17 10.5 4v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+                      </div>
+                    </div>
+
+                    {/* Wallet History link */}
+                    <div className="flex justify-end">
+                      <span className="text-[5px] text-white/70 font-semibold flex items-center gap-0.5">
+                        Wallet History
+                        <svg viewBox="0 0 24 24" className="w-1.5 h-1.5 fill-white/70"><path d="M10 17l5-5-5-5v10z"/></svg>
+                      </span>
+                    </div>
+
+                    {/* Available Balance Card */}
+                    <div className="bg-[#EDE9FE] dark:bg-[#2E1A5A] rounded-xl px-2.5 py-2 flex justify-between items-center shadow-md">
+                      <div className="space-y-0.5 text-left">
+                        <span className="text-[5px] font-semibold text-neutral-600 dark:text-purple-200 block">Available balance</span>
+                        <span className="text-[12px] font-extrabold text-neutral-900 dark:text-white tracking-tight leading-none">₦105,000</span>
+                      </div>
+                      <div className="bg-[#7C3AED] text-white text-[5.5px] font-extrabold px-2 py-1.5 rounded-lg shadow-sm whitespace-nowrap">
+                        Fund Wallet
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ===== WHITE BODY — 3x2 SVG ICON GRID ===== */}
+                  <div className="bg-white dark:bg-[#0D0D1A] flex-1 px-2 pt-2 pb-1">
+                    <div className="grid grid-cols-3 gap-1.5">
+                      {[
+                        { label: 'Airtime',     d: 'M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.47 11.47 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2z' },
+                        { label: 'Data',        d: 'M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4 2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z' },
+                        { label: 'Electricity', d: 'M7 2v11h3v9l7-12h-4l4-8z' },
+                        { label: 'Betting',     d: 'M3 3h18v2H3V3zm2 4h14v2H5V7zm-2 4h18v2H3v-2zm2 4h14v2H5v-2z' },
+                        { label: 'Internet',    d: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z' },
+                        { label: 'Cable TV',    d: 'M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z' },
+                      ].map((item) => (
+                        <div key={item.label} className="bg-white dark:bg-[#161626] border border-[#EDE9FE] dark:border-[#2E1A5A] rounded-xl flex flex-col items-center justify-center py-1.5 gap-0.5 shadow-sm">
+                          <div className="w-4 h-4 rounded-full bg-[#F3EEFE] dark:bg-[#2E1A5A] flex items-center justify-center">
+                            <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 fill-[#7C3AED] dark:fill-[#A78BFA]">
+                              <path d={item.d} />
+                            </svg>
+                          </div>
+                          <span className="text-[5px] font-bold text-neutral-700 dark:text-neutral-300 text-center leading-tight">{item.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            {/* Card 2: HomeLink */}
+            <div className="relative overflow-hidden bg-[#F0FAF5] dark:bg-[#091710] border border-emerald-500/10 dark:border-emerald-500/20 rounded-[2rem] pt-10 px-8 pb-0 shadow-sm hover:shadow-xl transition-all duration-300 group min-h-[500px] flex flex-col justify-between md:translate-y-12">
+              
+              {/* Topographic Background lines */}
+              <div className="absolute -top-3 -right-px w-36 h-28 opacity-25 pointer-events-none text-emerald-500">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+                  <path d="M0,-10 Q30,50 65,20 T105,35" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M0,0 Q30,65 65,35 T105,50" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M0,10 Q30,80 65,50 T105,65" stroke="currentColor" strokeWidth="1.5" />
                 </svg>
               </div>
 
@@ -1014,15 +1137,15 @@ export default function Index() {
 
             </div>
 
-            {/* Card 2: ClinicPlus */}
-            <div className="relative overflow-hidden bg-[#F2F6FC] dark:bg-[#0A1020] border border-blue-500/10 dark:border-blue-500/20 rounded-[2rem] pt-10 px-8 pb-0 shadow-sm hover:shadow-xl transition-all duration-300 group min-h-[500px] flex flex-col justify-between md:translate-y-12">
+            {/* Card 3: ClinicPlus */}
+            <div className="relative overflow-hidden bg-[#F2F6FC] dark:bg-[#0A1020] border border-blue-500/10 dark:border-blue-500/20 rounded-[2rem] pt-10 px-8 pb-0 shadow-sm hover:shadow-xl transition-all duration-300 group min-h-[500px] flex flex-col justify-between md:translate-y-24">
               
               {/* Topographic Background lines */}
-              <div className="absolute top-0 right-0 w-32 h-24 opacity-25 pointer-events-none text-blue-500">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover">
-                  <path d="M10,10 Q30,50 60,20 T90,40" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M10,25 Q30,65 60,35 T90,55" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M10,40 Q30,80 60,50 T90,70" stroke="currentColor" strokeWidth="1.5" />
+              <div className="absolute -top-3 -right-px w-36 h-28 opacity-25 pointer-events-none text-blue-500">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" className="w-full h-full">
+                  <path d="M0,-10 Q30,50 65,20 T105,35" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M0,0 Q30,65 65,35 T105,50" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M0,10 Q30,80 65,50 T105,65" stroke="currentColor" strokeWidth="1.5" />
                 </svg>
               </div>
 
@@ -1041,7 +1164,7 @@ export default function Index() {
                   Cloud clinic administration suite.
                 </h3>
                 <p className="text-sm font-normal text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                  Streamline operations at clinical centers—covering patient registration, scheduling, billing ledgers, and electronic records.
+                  Streamline operations at clinical centers, covering patient registration, scheduling, billing ledgers, and electronic records.
                 </p>
                 <div className="pt-2">
                   <button
@@ -1121,7 +1244,7 @@ export default function Index() {
                       <p className="text-[6px] font-extrabold text-neutral-900 dark:text-white">Dashboard</p>
                       <div className="flex items-center gap-0.5 bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1 py-0.5">
                         <svg viewBox="0 0 24 24" className="w-1.5 h-1.5 fill-neutral-500"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
-                        <span className="text-[3.5px] text-neutral-500">May 20 – May 26, 2024</span>
+                        <span className="text-[3.5px] text-neutral-500">May 20 to May 26, 2024</span>
                       </div>
                     </div>
 
@@ -1276,140 +1399,9 @@ export default function Index() {
                         </svg>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
-
-            </div>
-
-            {/* Card 3: PayEase (Figur phone layout replication) */}
-            <div className="relative overflow-hidden bg-[#F5F2FC] dark:bg-[#100C1F] border border-purple-500/10 dark:border-purple-500/20 rounded-[2rem] pt-10 px-8 pb-0 shadow-sm hover:shadow-xl transition-all duration-300 group min-h-[500px] flex flex-col justify-between md:translate-y-24">
-              
-              {/* Topographic Background lines */}
-              <div className="absolute top-0 right-0 w-32 h-24 opacity-25 pointer-events-none text-purple-500">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover">
-                  <path d="M10,10 Q30,50 60,20 T90,40" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M10,25 Q30,65 60,35 T90,55" stroke="currentColor" strokeWidth="1.5" />
-                  <path d="M10,40 Q30,80 60,50 T90,70" stroke="currentColor" strokeWidth="1.5" />
-                </svg>
-              </div>
-
-              <div className="space-y-4 text-left">
-                <div className="flex items-center gap-2 mb-2">
-                  <img
-                    src={payeaseMockup}
-                    alt=""
-                    className="w-8 h-8 object-cover object-left rounded-lg dark:bg-purple-900/30 flex-shrink-0"
-                  />
-                  <span className="text-xs font-bold text-purple-600 dark:text-purple-400 block font-display">
-                    PayEase
-                  </span>
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold tracking-tight text-neutral-950 dark:text-white font-display leading-snug">
-                  A digital payment.
-                </h3>
-                <p className="text-sm font-normal text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                  An ecosystem built for individuals and businesses to experience seamless accessibility to everyday financial services.
-                </p>
-                <div className="pt-2">
-                  <button
-                    onClick={() => setActiveTab('PayEase')}
-                    className="text-[#7C3AED] dark:text-[#A78BFA] font-bold text-xs uppercase tracking-widest inline-flex items-center gap-1 hover:underline cursor-pointer"
-                  >
-                    LEARN MORE <ArrowRight size={12} />
-                  </button>
-                </div>
-              </div>
-
-              {/* Phone screen overflowing bottom right */}
-              <div className="relative h-[220px] w-full mt-8 flex justify-end">
-                <div className="w-[200px] h-[260px] bg-white dark:bg-[#0D0D1A] rounded-t-[1.6rem] shadow-2xl flex flex-col translate-x-4 translate-y-3 group-hover:translate-y-0.5 transition-transform duration-500 text-left relative z-10 overflow-hidden border border-neutral-200/50 dark:border-neutral-800/30">
-                  
-                  {/* ===== PURPLE HEADER ===== */}
-                  <div className="bg-gradient-to-br from-[#8B3CF7] via-[#7C3AED] to-[#6D28D9] px-3 pt-2 pb-3 flex flex-col gap-1.5">
-                    {/* Status Bar */}
-                    <div className="flex justify-between items-center text-white">
-                      <span className="text-[6.5px] font-bold font-mono">9:41</span>
-                      <div className="flex items-center gap-0.5">
-                        <div className="flex items-end gap-[1px]">
-                          <span className="w-[1.5px] h-[3px] bg-white rounded-sm"></span>
-                          <span className="w-[1.5px] h-[4px] bg-white rounded-sm"></span>
-                          <span className="w-[1.5px] h-[5px] bg-white rounded-sm"></span>
-                          <span className="w-[1.5px] h-[6px] bg-white rounded-sm"></span>
-                        </div>
-                        <svg width="8" height="6" viewBox="0 0 10 8" fill="white" className="mx-0.5"><path d="M5 6.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zM1.5 3.5C2.7 2.3 3.8 1.5 5 1.5s2.3.8 3.5 2l1-1C8.1 1.1 6.6 0 5 0S1.9 1.1.5 2.5l1 1zm1.5 1.5C3.7 4.3 4.3 4 5 4s1.3.3 2 1l1-1C7.1 3.1 6.1 2.5 5 2.5S2.9 3.1 2 4l1 1z"/></svg>
-                        <div className="flex items-center gap-[1px]">
-                          <div className="w-3.5 h-1.5 rounded-[2px] border border-white relative overflow-hidden">
-                            <div className="absolute inset-[1px] bg-white rounded-sm"></div>
-                          </div>
-                          <div className="w-[1px] h-1 bg-white rounded-r-sm"></div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Profile Row */}
-                    <div className="flex justify-between items-center">
-                      <div className="flex items-center gap-1.5">
-                        <div className="w-5 h-5 rounded-full bg-[#4C1D95] border-2 border-white/30 overflow-hidden flex items-center justify-center flex-shrink-0">
-                          <svg viewBox="0 0 24 24" className="w-4 h-4 fill-white/80"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-                        </div>
-                        <div className="leading-none">
-                          <span className="text-[5.5px] text-white/80 font-medium block">Welcome Back</span>
-                          <span className="text-[8px] font-extrabold text-white block">Kris4</span>
-                        </div>
-                      </div>
-                      <div className="w-5 h-5 rounded-full bg-white/15 flex items-center justify-center border border-white/20">
-                        <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 fill-white"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5S10.5 3.17 10.5 4v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
-                      </div>
-                    </div>
-
-                    {/* Wallet History link */}
-                    <div className="flex justify-end">
-                      <span className="text-[5px] text-white/70 font-semibold flex items-center gap-0.5">
-                        Wallet History
-                        <svg viewBox="0 0 24 24" className="w-1.5 h-1.5 fill-white/70"><path d="M10 17l5-5-5-5v10z"/></svg>
-                      </span>
-                    </div>
-
-                    {/* Available Balance Card */}
-                    <div className="bg-[#EDE9FE] dark:bg-[#2E1A5A] rounded-xl px-2.5 py-2 flex justify-between items-center shadow-md">
-                      <div className="space-y-0.5 text-left">
-                        <span className="text-[5px] font-semibold text-neutral-600 dark:text-purple-200 block">Available balance</span>
-                        <span className="text-[12px] font-extrabold text-neutral-900 dark:text-white tracking-tight leading-none">₦105,000</span>
-                      </div>
-                      <div className="bg-[#7C3AED] text-white text-[5.5px] font-extrabold px-2 py-1.5 rounded-lg shadow-sm whitespace-nowrap">
-                        Fund Wallet
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* ===== WHITE BODY — 3x2 SVG ICON GRID ===== */}
-                  <div className="bg-white dark:bg-[#0D0D1A] flex-1 px-2 pt-2 pb-1">
-                    <div className="grid grid-cols-3 gap-1.5">
-                      {[
-                        { label: 'Airtime',     d: 'M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24 11.47 11.47 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2z' },
-                        { label: 'Data',        d: 'M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4 2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z' },
-                        { label: 'Electricity', d: 'M7 2v11h3v9l7-12h-4l4-8z' },
-                        { label: 'Betting',     d: 'M3 3h18v2H3V3zm2 4h14v2H5V7zm-2 4h18v2H3v-2zm2 4h14v2H5v-2z' },
-                        { label: 'Internet',    d: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z' },
-                        { label: 'Cable TV',    d: 'M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12z' },
-                      ].map((item) => (
-                        <div key={item.label} className="bg-white dark:bg-[#161626] border border-[#EDE9FE] dark:border-[#2E1A5A] rounded-xl flex flex-col items-center justify-center py-1.5 gap-0.5 shadow-sm">
-                          <div className="w-4 h-4 rounded-full bg-[#F3EEFE] dark:bg-[#2E1A5A] flex items-center justify-center">
-                            <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 fill-[#7C3AED] dark:fill-[#A78BFA]">
-                              <path d={item.d} />
-                            </svg>
-                          </div>
-                          <span className="text-[5px] font-bold text-neutral-700 dark:text-neutral-300 text-center leading-tight">{item.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
             </div>
 
           </div>
@@ -1451,11 +1443,7 @@ export default function Index() {
         const faqs = [
           {
             q: 'How long does a project typically take?',
-            a: 'Most projects are completed within 6–10 weeks, from the initial discovery session through to launch. More complex projects that involve in-depth strategy, custom functionality, or extensive copywriting typically take 12–16 weeks. Our focus is on delivering exceptional quality and attention to detail, so we prioritize getting it right over rushing the process.'
-          },
-          {
-            q: 'What does a website project typically cost?',
-            a: 'Our website projects typically start at $2,500 and can exceed $80,000, depending on the project\'s scope, strategic requirements, custom features, and overall technical complexity. During our initial strategy session, we\'ll discuss your goals, requirements, and the investment needed to bring your vision to life.'
+            a: 'Most projects are completed within 6 to 10 weeks, from the initial discovery session through to launch. More complex projects that involve in depth strategy, custom functionality, or extensive copywriting typically take 12 to 16 weeks. Our focus is on delivering exceptional quality and attention to detail, so we prioritize getting it right over rushing the process.'
           },
           {
             q: 'Do you provide copywriting and messaging services?',
@@ -1463,7 +1451,7 @@ export default function Index() {
           },
           {
             q: 'Can you redesign an existing website?',
-            a: 'Absolutely. Many of our clients come to us with websites that no longer represent their brand, business goals, or growth. We go beyond visual improvements by rethinking the site\'s strategy, user experience, performance, and functionality to create a modern, high-performing website built for long-term success.'
+            a: 'Absolutely. Many of our clients come to us with websites that no longer represent their brand, business goals, or growth. We go beyond visual improvements by rethinking the site\'s strategy, user experience, performance, and functionality to create a modern, high performing website built for long term success.'
           },
           {
             q: 'Do you provide ongoing support after launch?',
@@ -1575,13 +1563,14 @@ export default function Index() {
       )}
 
       {activeTab === 'About Us' && <AboutIndex />}
-      {activeTab === "Let's Talk" && <TalkIndex isDark={isDark} />}
+      {activeTab === "Let's Talk" && <TalkIndex isDark={isDark} setActiveTab={setActiveTab} previousTab={previousTab} />}
       {activeTab === 'Product Design' && <ProductDesign setActiveTab={setActiveTab} />}
       {activeTab === 'Mobile App' && <MobileApp setActiveTab={setActiveTab} />}
       {activeTab === 'Web Dev' && <WebDev setActiveTab={setActiveTab} />}
 
       {/* 7. Footer Section */}
-      <footer className="bg-white dark:bg-neutral-950 border-t border-neutral-200/50 dark:border-neutral-800/50 py-12 transition-colors duration-300">
+      {activeTab !== "Let's Talk" && (
+        <footer className="bg-white dark:bg-neutral-950 border-t border-neutral-200/50 dark:border-neutral-800/50 py-12 transition-colors duration-300">
         <div className={`${themeStyles.container} space-y-8`}>
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             {/* Logo Brand — swaps between light/dark logo based on theme */}
@@ -1598,8 +1587,18 @@ export default function Index() {
               {navLinks.map((link) => (
                 <button
                   key={link}
-                  onClick={() => setActiveTab(link)}
-                  className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  onClick={() => {
+                    if (link === 'Products') {
+                      window.__scroll_to_products = true
+                      setActiveTab('Home')
+                      setTimeout(() => {
+                        document.getElementById('products-section')?.scrollIntoView({ behavior: 'smooth' })
+                      }, 100)
+                    } else {
+                      setActiveTab(link)
+                    }
+                  }}
+                  className="text-xs font-semibold text-neutral-500 dark:text-neutral-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors cursor-pointer"
                 >
                   {link}
                 </button>
@@ -1629,7 +1628,8 @@ export default function Index() {
             </div>
           </div>
         </div>
-      </footer>
+        </footer>
+      )}
     </div>
   )
 }

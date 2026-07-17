@@ -4,16 +4,15 @@ import { themeStyles } from '../../styles/themeStyles'
 import clinicplusFeatureDoctor from '../../assets/clinicplus_feature_doctor.png'
 import webDevHero from '../../assets/web_dev_hero.png'
 
-export default function ClinicPlus({ onBack }) {
+export default function ClinicPlus({ onBack, setActiveTab }) {
   return (
     <div className="min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-white pb-24 transition-colors duration-300">
       <div className={themeStyles.container}>
         
-        {/* Back navigation */}
         <div className="pt-8 pb-4">
           <button
             onClick={onBack}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue dark:text-brand-blue-light hover:underline cursor-pointer transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue dark:text-brand-blue-light hover:opacity-75 cursor-pointer transition-opacity"
           >
             <ArrowLeft size={16} /> Back to Product
           </button>
@@ -94,18 +93,16 @@ export default function ClinicPlus({ onBack }) {
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed max-w-xl">
-              Streamline operations across clinical centers—from automated patient registration and intelligent scheduling to electronic health records and unified billing ledgers.
+              Streamline operations across clinical centers, from automated patient registration and intelligent scheduling to electronic health records and unified billing ledgers.
             </p>
 
             <div className="pt-2">
-              <a
-                href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-base shadow-lg hover:shadow-xl transition-all cursor-pointer"
+              <button
+                onClick={() => setActiveTab?.("Let's Talk")}
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-base shadow-lg hover:shadow-xl transition-all cursor-pointer border-0"
               >
                 Get Started
-              </a>
+              </button>
             </div>
           </div>
 
@@ -127,14 +124,12 @@ export default function ClinicPlus({ onBack }) {
                 Manage doctors, specialists, nurses, and lab reports on one seamless platform. Eliminate paperwork delays and reduce billing discrepancies by over 40%.
               </p>
               <div className="pt-2">
-                <a
-                  href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white text-[#08132B] hover:bg-blue-50 font-bold text-sm shadow-md transition-all cursor-pointer"
+                <button
+                  onClick={() => setActiveTab?.("Let's Talk")}
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-white text-[#08132B] hover:bg-blue-50 font-bold text-sm shadow-md transition-all cursor-pointer border-0"
                 >
                   Schedule Suite Demo
-                </a>
+                </button>
               </div>
             </div>
 
@@ -173,7 +168,7 @@ export default function ClinicPlus({ onBack }) {
             <div className="rounded-[2.5rem] overflow-hidden shadow-xl border border-neutral-100 dark:border-neutral-800">
               <img
                 src={clinicplusFeatureDoctor}
-                alt="Zero-wait patient scheduling"
+                alt="Zero wait patient scheduling"
                 className="w-full h-[360px] sm:h-[420px] object-cover"
               />
             </div>
@@ -181,20 +176,18 @@ export default function ClinicPlus({ onBack }) {
 
           <div className="lg:col-span-6 space-y-6 text-left">
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white font-display leading-tight">
-              Zero-wait patient scheduling
+              Zero wait patient scheduling
             </h2>
             <p className="text-base text-neutral-600 dark:text-neutral-300 leading-relaxed max-w-lg">
-              Allow patients to book appointments online or check in seamlessly at kiosk stations, automatically routing their file to the right consulting physician without wait-room bottlenecks.
+              Allow patients to book appointments online or check in seamlessly at kiosk stations, automatically routing their file to the right consulting physician without wait room bottlenecks.
             </p>
             <div className="pt-2">
-              <a
-                href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
+              <button
+                onClick={() => setActiveTab?.("Let's Talk")}
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition-all cursor-pointer border-0"
               >
                 Learn More
-              </a>
+              </button>
             </div>
           </div>
 
@@ -211,14 +204,12 @@ export default function ClinicPlus({ onBack }) {
               Automate HMO claims, insurance verifications, and direct patient invoicing with our built-in clinical finance engine that syncs directly with accounting ledgers.
             </p>
             <div className="pt-2">
-              <a
-                href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition-all cursor-pointer"
+              <button
+                onClick={() => setActiveTab?.("Let's Talk")}
+                className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow-md transition-all cursor-pointer border-0"
               >
                 Learn More
-              </a>
+              </button>
             </div>
           </div>
 
@@ -241,14 +232,12 @@ export default function ClinicPlus({ onBack }) {
               Ready to figure out your clinical operations with ClinicPlus?
             </h2>
             <div className="pt-2">
-              <a
-                href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-9 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-base shadow-xl transition-all cursor-pointer"
+              <button
+                onClick={() => setActiveTab?.("Let's Talk")}
+                className="inline-flex items-center justify-center px-9 py-4 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-base shadow-xl transition-all cursor-pointer border-0"
               >
                 Get Started
-              </a>
+              </button>
             </div>
           </div>
         </div>

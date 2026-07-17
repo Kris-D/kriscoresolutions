@@ -15,7 +15,7 @@ const SvgIcon = ({ d, className = 'w-5 h-5' }) => (
 const WHY_FEATURES = [
   {
     icon: <Zap size={22} />,
-    title: 'Lightning-Fast Transactions',
+    title: 'Lightning Fast Transactions',
     body: 'Complete purchases in seconds with instant delivery across all supported services.',
     accent: 'bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400',
   },
@@ -32,7 +32,7 @@ const WHY_FEATURES = [
       </svg>
     ),
     title: 'Reliable Service',
-    body: 'Built for consistency — PayEase keeps your essential digital services running without interruption.',
+    body: 'Built for consistency, PayEase keeps your essential digital services running without interruption.',
     accent: 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400',
   },
   {
@@ -42,7 +42,7 @@ const WHY_FEATURES = [
       </svg>
     ),
     title: 'Available Anytime',
-    body: 'Purchase digital services at your convenience — morning, night, or on the go.',
+    body: 'Purchase digital services at your convenience, morning, night, or on the go.',
     accent: 'bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400',
   },
   {
@@ -52,13 +52,13 @@ const WHY_FEATURES = [
       </svg>
     ),
     title: 'Simple & Intuitive',
-    body: 'A clean, user-friendly interface makes buying digital services effortless for everyone.',
+    body: 'A clean, user friendly interface makes buying digital services effortless for everyone.',
     accent: 'bg-rose-50 dark:bg-rose-900/20 text-rose-600 dark:text-rose-400',
   },
   {
     icon: <CheckCircle2 size={22} />,
     title: 'Built for Everyday Use',
-    body: 'Everything you need for digital utility payments is available in one easy-to-use platform.',
+    body: 'Everything you need for digital utility payments is available in one easy to use platform.',
     accent: 'bg-teal-50 dark:bg-teal-900/20 text-teal-600 dark:text-teal-400',
   },
 ]
@@ -126,21 +126,19 @@ const STEPS = [
   },
 ]
 
-export default function PayEase({ onBack }) {
+export default function PayEase({ onBack, setActiveTab }) {
   return (
     <div className="min-h-screen bg-white dark:bg-[#080D1C] text-neutral-900 dark:text-white transition-colors duration-300">
-
       {/* ─── BACK BUTTON ─── */}
       <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 pt-8 pb-2">
         <button
           onClick={onBack}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-[#7C3AED] dark:text-[#A78BFA] hover:opacity-75 cursor-pointer transition-opacity"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue dark:text-brand-blue-light hover:opacity-75 cursor-pointer transition-opacity"
         >
           <ArrowLeft size={16} />
           Back to Product
         </button>
       </div>
-
       {/* ═══════════════════════════════════════════════════════════
           SECTION 1 — HERO
           Phone mockup left │ Headline + tagline right
@@ -275,23 +273,21 @@ export default function PayEase({ onBack }) {
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-black leading-[1.06] tracking-tight text-neutral-950 dark:text-white">
+            <h1 className="text-4xl sm:text-5xl lg:text-[52px] font-black leading-[1.1] tracking-tight text-neutral-950 dark:text-white">
               Buy airtime, data, electricity &amp; TV in <span className="text-[#7C3AED] dark:text-[#A78BFA]">seconds.</span>
             </h1>
 
             <p className="text-base sm:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed max-w-lg">
-              PayEase is a modern Virtual Top-Up (VTU) platform designed to make everyday
+              PayEase is a modern Virtual Top Up (VTU) platform designed to make everyday
               digital utility payments effortlessly fast, secure, and reliable every single time.
             </p>
 
-            <a
-              href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#6D28D9] hover:bg-[#5B21B6] dark:bg-[#7C3AED] dark:hover:bg-[#6D28D9] text-white font-bold text-base shadow-lg transition-all duration-200 cursor-pointer"
+            <button
+              onClick={() => setActiveTab?.("Let's Talk")}
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#6D28D9] hover:bg-[#5B21B6] dark:bg-[#7C3AED] dark:hover:bg-[#6D28D9] text-white font-bold text-base shadow-lg transition-all duration-200 cursor-pointer border-0"
             >
               Get Started Free
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -408,20 +404,20 @@ export default function PayEase({ onBack }) {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════════════
-          SECTION 5 — SIMPLICITY STATEMENT (image left, copy right)
-      ═══════════════════════════════════════════════════════════ */}
+      {/* ===========================================================
+          SECTION 5 - SIMPLICITY STATEMENT (image left, copy right)
+      =========================================================== */}
       <section className="bg-white dark:bg-[#080D1C] py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-            {/* LEFT ── copy */}
+            {/* LEFT - copy */}
             <div className="space-y-7 order-2 lg:order-1">
               <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-black leading-tight tracking-tight text-neutral-950 dark:text-white">
                 Designed around simplicity.
               </h2>
               <p className="text-base sm:text-lg text-neutral-500 dark:text-neutral-400 leading-relaxed">
-                Technology should simplify your life — not complicate it. PayEase combines speed,
+                Technology should simplify your life, not complicate it. PayEase combines speed,
                 reliability, and thoughtful design to deliver a premium VTU experience that's easy
                 to use for anyone.
               </p>
@@ -439,21 +435,19 @@ export default function PayEase({ onBack }) {
                   </li>
                 ))}
               </ul>
-              <a
-                href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#6D28D9] hover:bg-[#5B21B6] dark:bg-[#7C3AED] dark:hover:bg-[#6D28D9] text-white font-bold text-sm shadow-lg transition-all duration-200 cursor-pointer"
+              <button
+                onClick={() => setActiveTab?.("Let's Talk")}
+                className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-[#6D28D9] hover:bg-[#5B21B6] dark:bg-[#7C3AED] dark:hover:bg-[#6D28D9] text-white font-bold text-sm shadow-lg transition-all duration-200 cursor-pointer border-0"
               >
                 Take Control Today
-              </a>
+              </button>
             </div>
 
-            {/* RIGHT ── image */}
+            {/* RIGHT - image */}
             <div className="rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-2">
               <img
                 src={payeaseStoreFeature}
-                alt="PayEase — simple and reliable"
+                alt="PayEase: simple and reliable"
                 className="w-full h-[420px] sm:h-[500px] object-cover object-center"
               />
             </div>
@@ -474,14 +468,12 @@ export default function PayEase({ onBack }) {
             Join thousands of users who trust PayEase for fast, reliable, and secure
             digital utility payments every day.
           </p>
-          <a
-            href="https://calendly.com/kriscoresolutions/30min?month=2026-07"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-white hover:bg-purple-50 text-[#2D1060] font-bold text-base shadow-2xl transition-all duration-200 cursor-pointer"
+          <button
+            onClick={() => setActiveTab?.("Let's Talk")}
+            className="inline-flex items-center justify-center px-10 py-4 rounded-full bg-white hover:bg-purple-50 text-[#2D1060] font-bold text-base shadow-2xl transition-all duration-200 cursor-pointer border-0"
           >
             Get Started Free
-          </a>
+          </button>
         </div>
       </section>
 
