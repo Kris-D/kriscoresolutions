@@ -11,14 +11,36 @@ export default function TalkIndex({ isDark = false, setActiveTab, previousTab })
   const [loading, setLoading] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    // Simulate API request delay
-    setTimeout(() => {
+
+    const formData = new FormData()
+    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "bb4fc96d-d6ed-4bb0-a2d6-4279ef4e464b")
+    formData.append("name", `${firstName} ${lastName}`)
+    formData.append("email", email)
+    formData.append("subject", "New Waitlist Subscriber - Kriscore")
+    formData.append("from_name", "Kriscore Solutions Waitlist")
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setIsSubmitted(true)
+      } else {
+        alert(data.message || "Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      console.error("Submission error:", error)
+      alert("Connection error. Please check your internet connection and try again.")
+    } finally {
       setLoading(false)
-      setIsSubmitted(true)
-    }, 1200)
+    }
   }
 
   const handleClose = () => {
