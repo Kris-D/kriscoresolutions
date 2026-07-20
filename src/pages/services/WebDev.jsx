@@ -1,4 +1,4 @@
-﻿import { 
+import { 
   ArrowLeft,
   MessageSquare,
   Laptop
@@ -72,12 +72,101 @@ export default function WebDev({ setActiveTab }) {
           </div>
 
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md overflow-hidden rounded-[2.5rem] shadow-2xl border border-neutral-200/50 dark:border-neutral-800/80 bg-neutral-100 dark:bg-[#070C16]">
-              <img
-                src={webDevHero}
-                alt="Website Design and Development"
-                className="w-full h-auto object-cover"
-              />
+            <div className="relative w-full max-w-md">
+              {/* Browser mockup */}
+              <div className="w-full rounded-2xl shadow-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#0D1117]">
+
+                {/* Browser chrome */}
+                <div className="bg-neutral-100 dark:bg-[#161B22] px-4 py-2.5 flex items-center gap-3 border-b border-neutral-200 dark:border-neutral-800">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-amber-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-emerald-400"></div>
+                  </div>
+                  <div className="flex-1 bg-white dark:bg-[#0D1117] rounded-md px-3 py-1 border border-neutral-200 dark:border-neutral-700 flex items-center gap-2">
+                    <svg viewBox="0 0 24 24" className="w-3 h-3 fill-neutral-400 flex-shrink-0"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                    <span className="text-[10px] text-neutral-400 font-mono">kriscore.io</span>
+                    <span className="ml-auto text-[8px] bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-1.5 py-0.5 rounded font-bold">Secure</span>
+                  </div>
+                </div>
+
+                {/* Page preview */}
+                <div className="bg-white dark:bg-[#0D1117] p-4 space-y-3">
+
+                  {/* Navbar preview */}
+                  <div className="flex items-center justify-between px-3 py-2 rounded-lg bg-neutral-50 dark:bg-[#161B22] border border-neutral-100 dark:border-neutral-800">
+                    <div className="flex items-center gap-2">
+                      <div className="w-4 h-4 rounded bg-brand-blue"></div>
+                      <div className="w-10 h-1.5 bg-neutral-300 dark:bg-neutral-700 rounded-full"></div>
+                    </div>
+                    <div className="flex gap-3">
+                      {[40, 32, 36, 28].map((w, i) => (
+                        <div key={i} style={{width: w}} className="h-1.5 bg-neutral-200 dark:bg-neutral-700 rounded-full"></div>
+                      ))}
+                    </div>
+                    <div className="w-14 h-5 rounded-full bg-brand-blue"></div>
+                  </div>
+
+                  {/* Hero section preview */}
+                  <div className="rounded-lg bg-gradient-to-br from-[#EEF2FF] to-[#F0F9FF] dark:from-[#0D1630] dark:to-[#0A1020] p-4 space-y-2">
+                    <div className="w-16 h-1.5 bg-brand-blue/40 rounded-full"></div>
+                    <div className="w-40 h-3 bg-neutral-800 dark:bg-white rounded-full opacity-80"></div>
+                    <div className="w-32 h-3 bg-neutral-800 dark:bg-white rounded-full opacity-60"></div>
+                    <div className="space-y-1 pt-1">
+                      <div className="w-full h-1.5 bg-neutral-300 dark:bg-neutral-700 rounded-full opacity-70"></div>
+                      <div className="w-4/5 h-1.5 bg-neutral-300 dark:bg-neutral-700 rounded-full opacity-60"></div>
+                      <div className="w-3/5 h-1.5 bg-neutral-300 dark:bg-neutral-700 rounded-full opacity-50"></div>
+                    </div>
+                    <div className="flex gap-2 pt-1">
+                      <div className="w-20 h-6 rounded-full bg-brand-blue"></div>
+                      <div className="w-20 h-6 rounded-full border border-neutral-300 dark:border-neutral-700"></div>
+                    </div>
+                  </div>
+
+                  {/* Feature cards row */}
+                  <div className="grid grid-cols-3 gap-2">
+                    {[
+                      { color: 'bg-blue-100 dark:bg-blue-900/30', icon: 'bg-brand-blue' },
+                      { color: 'bg-emerald-100 dark:bg-emerald-900/30', icon: 'bg-emerald-500' },
+                      { color: 'bg-violet-100 dark:bg-violet-900/30', icon: 'bg-violet-500' },
+                    ].map((c, i) => (
+                      <div key={i} className={`rounded-lg ${c.color} p-2.5 space-y-1.5`}>
+                        <div className={`w-5 h-5 rounded-md ${c.icon}`}></div>
+                        <div className="w-full h-1.5 bg-neutral-300/60 dark:bg-neutral-600/60 rounded-full"></div>
+                        <div className="w-4/5 h-1.5 bg-neutral-300/40 dark:bg-neutral-600/40 rounded-full"></div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating code snippet card */}
+              <div className="absolute -bottom-6 -left-6 w-52 bg-[#0D1117] rounded-xl shadow-2xl border border-neutral-800 p-3 font-mono text-[10px] leading-relaxed">
+                <div className="flex items-center gap-1.5 mb-2">
+                  <div className="w-2 h-2 rounded-full bg-red-400"></div>
+                  <div className="w-2 h-2 rounded-full bg-amber-400"></div>
+                  <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
+                  <span className="ml-1 text-[9px] text-neutral-500">index.jsx</span>
+                </div>
+                <div><span className="text-[#FF7B72]">const</span> <span className="text-[#79C0FF]">App</span> <span className="text-white">= () =&gt; {'{'}</span></div>
+                <div className="pl-3"><span className="text-[#FF7B72]">return</span> <span className="text-[#79C0FF]">(</span></div>
+                <div className="pl-6"><span className="text-[#7EE787]">&lt;div</span> <span className="text-[#FFA657]">className</span><span className="text-white">=</span><span className="text-[#A5D6FF]">"app"</span><span className="text-[#7EE787]">&gt;</span></div>
+                <div className="pl-9"><span className="text-[#7EE787]">&lt;Hero</span> <span className="text-[#FFA657]">brand</span><span className="text-[#7EE787]">/&gt;</span></div>
+                <div className="pl-6"><span className="text-[#7EE787]">&lt;/div&gt;</span></div>
+                <div className="pl-3"><span className="text-[#79C0FF]">)</span></div>
+                <div><span className="text-white">{'}'}</span></div>
+              </div>
+
+              {/* Floating performance badge */}
+              <div className="absolute -top-4 -right-4 bg-white dark:bg-[#161B22] rounded-xl shadow-xl border border-neutral-200 dark:border-neutral-700 px-3 py-2 flex items-center gap-2">
+                <div className="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/30 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4 fill-emerald-500"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+                </div>
+                <div>
+                  <p className="text-[10px] font-black text-neutral-900 dark:text-white">100</p>
+                  <p className="text-[8px] text-neutral-400">Performance</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>

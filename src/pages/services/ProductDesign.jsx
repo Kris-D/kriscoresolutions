@@ -60,14 +60,170 @@ export default function ProductDesign({ setActiveTab }) {
             </div>
           </div>
           
-          {/* Right Column: Visual Mockup Image (Replaces Quote Form) */}
+          {/* Right Column: Custom Design Tool Illustration */}
           <div className="lg:col-span-5 relative flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-md overflow-hidden rounded-[2.5rem] shadow-2xl border border-neutral-200/50 dark:border-neutral-800/80 bg-neutral-100 dark:bg-[#070C16]">
-              <img
-                src={productDesignHero}
-                alt="Product Design & UX Mockup"
-                className="w-full h-auto object-cover"
-              />
+            <div className="relative w-full max-w-md">
+
+              {/* ── Main design canvas card ── */}
+              <div className="w-full rounded-2xl shadow-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-[#1E1E2E]">
+
+                {/* App toolbar */}
+                <div className="bg-neutral-100 dark:bg-[#2A2A3C] px-4 py-2 flex items-center justify-between border-b border-neutral-200 dark:border-neutral-700">
+                  <div className="flex items-center gap-2">
+                    <div className="flex gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-400"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+                    </div>
+                    <span className="text-[9px] font-bold text-neutral-500 dark:text-neutral-400 ml-2">Kriscore Design System</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="px-2 py-0.5 rounded bg-brand-blue text-white text-[8px] font-bold">Share</div>
+                    <div className="w-5 h-5 rounded-full bg-violet-500 flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" className="w-3 h-3 fill-white"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Canvas area with left tools + content */}
+                <div className="flex" style={{minHeight:'280px'}}>
+
+                  {/* Left tool rail */}
+                  <div className="w-9 bg-neutral-50 dark:bg-[#252536] border-r border-neutral-200 dark:border-neutral-700 flex flex-col items-center py-3 gap-3">
+                    {[
+                      'M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z',
+                      'M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z',
+                      'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z',
+                      'M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z',
+                    ].map((d, i) => (
+                      <div key={i} className={`w-6 h-6 rounded-md flex items-center justify-center cursor-pointer ${i === 1 ? 'bg-brand-blue/10' : 'hover:bg-neutral-200 dark:hover:bg-neutral-600'}`}>
+                        <svg viewBox="0 0 24 24" className={`w-3.5 h-3.5 ${i === 1 ? 'fill-brand-blue' : 'fill-neutral-500 dark:fill-neutral-400'}`}><path d={d}/></svg>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Canvas content */}
+                  <div className="flex-1 bg-[#F4F5F7] dark:bg-[#181825] p-3 space-y-2 overflow-hidden">
+
+                    {/* Frame label */}
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <span className="text-[7px] font-bold text-neutral-400">Frame 1</span>
+                      <div className="flex-1 h-px bg-neutral-200 dark:bg-neutral-700"></div>
+                      <span className="text-[7px] text-neutral-400">375 × 812</span>
+                    </div>
+
+                    {/* Mobile screen wireframe */}
+                    <div className="bg-white dark:bg-[#1E1E2E] rounded-xl border-2 border-dashed border-brand-blue/30 p-3 space-y-2">
+                      {/* Wireframe nav */}
+                      <div className="flex items-center justify-between">
+                        <div className="flex gap-1">
+                          <div className="w-8 h-1.5 bg-neutral-200 dark:bg-neutral-700 rounded-full"></div>
+                          <div className="w-5 h-1.5 bg-neutral-200 dark:bg-neutral-700 rounded-full"></div>
+                        </div>
+                        <div className="w-4 h-4 rounded bg-brand-blue/20 flex items-center justify-center">
+                          <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 fill-brand-blue"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+                        </div>
+                      </div>
+                      {/* Hero block */}
+                      <div className="rounded-lg bg-gradient-to-br from-brand-blue/10 to-violet-500/10 p-3">
+                        <div className="w-16 h-2 bg-brand-blue/40 rounded-full mb-1.5"></div>
+                        <div className="w-28 h-3 bg-neutral-800 dark:bg-white/80 rounded-full mb-1"></div>
+                        <div className="w-20 h-2 bg-neutral-300 dark:bg-neutral-600 rounded-full mb-2"></div>
+                        <div className="flex gap-1.5">
+                          <div className="w-14 h-5 rounded-full bg-brand-blue"></div>
+                          <div className="w-14 h-5 rounded-full border border-neutral-300 dark:border-neutral-600"></div>
+                        </div>
+                      </div>
+                      {/* Cards row */}
+                      <div className="grid grid-cols-2 gap-1.5">
+                        {[
+                          'bg-blue-50 dark:bg-blue-900/20',
+                          'bg-violet-50 dark:bg-violet-900/20',
+                        ].map((c, i) => (
+                          <div key={i} className={`rounded-lg ${c} p-2`}>
+                            <div className="w-4 h-4 rounded bg-neutral-300 dark:bg-neutral-600 mb-1"></div>
+                            <div className="w-full h-1.5 bg-neutral-200 dark:bg-neutral-700 rounded-full mb-0.5"></div>
+                            <div className="w-3/4 h-1 bg-neutral-100 dark:bg-neutral-800 rounded-full"></div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Color palette row */}
+                    <div className="bg-white dark:bg-[#1E1E2E] rounded-xl p-2.5">
+                      <p className="text-[7px] font-bold text-neutral-400 mb-1.5">Color Palette</p>
+                      <div className="flex gap-1.5">
+                        {['#004BCE','#3B82F6','#8B5CF6','#10B981','#F59E0B','#EF4444','#F8FAFC'].map((color, i) => (
+                          <div key={i} className="relative group">
+                            <div style={{backgroundColor: color}} className="w-5 h-5 rounded-md border border-neutral-200/50 dark:border-neutral-700/50 shadow-sm cursor-pointer"></div>
+                            {i === 0 && (
+                              <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-neutral-800 text-white text-[5px] font-mono px-1 py-0.5 rounded whitespace-nowrap">Primary</div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Typography sample */}
+                    <div className="bg-white dark:bg-[#1E1E2E] rounded-xl p-2.5">
+                      <p className="text-[7px] font-bold text-neutral-400 mb-1.5">Typography</p>
+                      <div className="space-y-1">
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-[11px] font-black text-neutral-900 dark:text-white leading-none">Aa</span>
+                          <span className="text-[7px] text-neutral-400">Inter — Display</span>
+                        </div>
+                        <div className="flex items-baseline gap-2">
+                          <span className="text-[8px] font-bold text-neutral-700 dark:text-neutral-300 leading-none">Aa</span>
+                          <span className="text-[7px] text-neutral-400">Inter — Body</span>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  {/* Right panel: layers */}
+                  <div className="w-24 bg-white dark:bg-[#252536] border-l border-neutral-200 dark:border-neutral-700 px-2 py-3 space-y-1 flex-shrink-0">
+                    <p className="text-[7px] font-bold text-neutral-400 mb-2">Layers</p>
+                    {[
+                      { label: 'Frame 1', indent: 0, icon: 'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z' },
+                      { label: 'Navbar', indent: 1, icon: 'M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z' },
+                      { label: 'Hero',   indent: 1, icon: 'M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14z' },
+                      { label: 'Button', indent: 2, icon: 'M19 3H5c-1.1 0-2 .9-2 2v3h2V5h14v14H5v-3H3v3c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z' },
+                      { label: 'Cards',  indent: 1, icon: 'M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z' },
+                      { label: 'Colors', indent: 1, icon: 'M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0 1 12 22zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5 0-.16-.08-.28-.14-.35-.41-.46-.63-1.05-.63-1.65A2.5 2.5 0 0 1 14.5 15h1.77c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7z' },
+                    ].map((l, i) => (
+                      <div key={i} className="flex items-center gap-1 py-0.5 rounded px-1 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer" style={{paddingLeft: `${(l.indent * 8) + 4}px`}}>
+                        <svg viewBox="0 0 24 24" className={`w-2.5 h-2.5 flex-shrink-0 ${i === 2 ? 'fill-brand-blue' : 'fill-neutral-400'}`}><path d={l.icon}/></svg>
+                        <span className={`text-[7px] truncate ${i === 2 ? 'text-brand-blue font-bold' : 'text-neutral-500 dark:text-neutral-400'}`}>{l.label}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Floating UX annotation badge */}
+              <div className="absolute -top-4 -left-4 bg-white dark:bg-[#252536] rounded-xl shadow-xl border border-neutral-200 dark:border-neutral-700 px-3 py-2 flex items-center gap-2 z-10">
+                <div className="w-7 h-7 rounded-full bg-violet-100 dark:bg-violet-900/30 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4 fill-violet-600 dark:fill-violet-400"><path d="M12 22C6.49 22 2 17.51 2 12S6.49 2 12 2s10 4.04 10 9c0 3.31-2.69 6-6 6h-1.77c-.28 0-.5.22-.5.5 0 .12.05.23.13.33.41.47.64 1.06.64 1.67A2.5 2.5 0 0 1 12 22zm0-18c-4.41 0-8 3.59-8 8s3.59 8 8 8c.28 0 .5-.22.5-.5 0-.16-.08-.28-.14-.35-.41-.46-.63-1.05-.63-1.65A2.5 2.5 0 0 1 14.5 15h1.77c2.21 0 4-1.79 4-4 0-3.86-3.59-7-8-7z"/></svg>
+                </div>
+                <div>
+                  <p className="text-[9px] font-black text-neutral-900 dark:text-white">UX First</p>
+                  <p className="text-[7px] text-neutral-400">User Centered</p>
+                </div>
+              </div>
+
+              {/* Floating component badge */}
+              <div className="absolute -bottom-4 -right-4 bg-white dark:bg-[#252536] rounded-xl shadow-xl border border-neutral-200 dark:border-neutral-700 px-3 py-2 flex items-center gap-2 z-10">
+                <div className="w-7 h-7 rounded-lg bg-brand-blue/10 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" className="w-4 h-4 fill-brand-blue"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"/></svg>
+                </div>
+                <div>
+                  <p className="text-[9px] font-black text-neutral-900 dark:text-white">Design System</p>
+                  <p className="text-[7px] text-neutral-400">Components</p>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
