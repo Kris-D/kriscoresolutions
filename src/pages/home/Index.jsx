@@ -44,6 +44,64 @@ import WebDev from '../services/WebDev'
 import PayEase from '../products/PayEase'
 import HomeLink from '../products/HomeLink'
 import ClinicPlus from '../products/ClinicPlus'
+import SEO from '../../components/SEO'
+
+const SEO_MAP = {
+  'Home': {
+    title: 'Kriscore Solutions Limited | Enterprise Software & Digital Products',
+    description: 'Kriscore Solutions is a global technology company creating future-ready software solutions, enterprise web applications, mobile apps, and UI/UX designs for ambitious brands.',
+    path: '/',
+    keywords: 'Kriscore, Kriscore Solutions, software agency, software company, web development, mobile app development, UI UX design, PayEase, HomeLink, ClinicPlus',
+  },
+  'About Us': {
+    title: 'About Us | Kriscore Solutions Limited',
+    description: 'Engineering the future of digital business. Learn about Kriscore\'s mission, technical excellence, leadership team, and global milestones.',
+    path: '/about',
+    keywords: 'About Kriscore, Kriscore leadership, software agency team, technology consulting',
+  },
+  'Product Design': {
+    title: 'Product Design & User Experience (UI/UX) | Kriscore Solutions',
+    description: 'Scalable and innovative product design and user experience solutions. We create user-centered digital interfaces, design systems, and wireframes.',
+    path: '/product-design',
+    keywords: 'product design, UI UX design, user experience, wireframing, design systems, interface design',
+  },
+  'Mobile App': {
+    title: 'Mobile App Development (Android, iOS & Hybrid) | Kriscore Solutions',
+    description: 'High-performance native iOS, Android, and hybrid mobile application development tailored specifically to your business needs.',
+    path: '/mobile-app',
+    keywords: 'mobile app development, iOS app development, Android app development, Flutter, React Native, mobile software',
+  },
+  'Web Dev': {
+    title: 'Website Design & Development Services | Kriscore Solutions',
+    description: 'Full-stack web design and development excelling in scalable front-end and back-end solutions, custom CMS integration, and secure databases.',
+    path: '/web-dev',
+    keywords: 'web development, frontend development, backend development, web design, CMS integration, full stack',
+  },
+  'PayEase': {
+    title: 'PayEase — Instant Virtual Top Up (VTU) & Utility Payment Platform | Kriscore',
+    description: 'Buy airtime, data bundles, electricity tokens, cable TV subscriptions, and digital utilities in seconds with PayEase VTU platform.',
+    path: '/payease',
+    keywords: 'PayEase, VTU platform, airtime recharge, data bundles, electricity bill payment, cable TV subscription',
+  },
+  'HomeLink': {
+    title: 'HomeLink — Smart Property Management & Escrow Security Platform | Kriscore',
+    description: 'Connect property owners, agents, and tenants with verified real estate listings, digital tenancy agreements, direct chat, and escrow payment protection.',
+    path: '/homelink',
+    keywords: 'HomeLink, property management, real estate software, escrow protection, tenancy agreements, property listings',
+  },
+  'ClinicPlus': {
+    title: 'ClinicPlus — All-in-One Healthcare & Hospital Management System | Kriscore',
+    description: 'Streamline patient care, EMR records, appointment scheduling, billing, pharmacy, and lab workflows with ClinicPlus secure cloud platform.',
+    path: '/clinicplus',
+    keywords: 'ClinicPlus, healthcare management system, hospital software, EMR system, medical records, clinic scheduling',
+  },
+  "Let's Talk": {
+    title: 'Contact Us & Get in Touch | Kriscore Solutions Limited',
+    description: 'Partner with Kriscore Solutions for custom software development, digital transformation, and enterprise tech consultations.',
+    path: '/talk',
+    keywords: 'Contact Kriscore, talk to developers, software consultation, hire developers',
+  },
+}
 
 function FaqSection({ faqs, themeStyles }) {
   const [openIndex, setOpenIndex] = useState(null)
@@ -284,9 +342,16 @@ export default function Index() {
   }
 
   const navLinks = ['Products', 'Services', 'About Us', 'FAQ', 'Contact']
+  const currentSeo = SEO_MAP[activeTab] || SEO_MAP['Home']
 
   return (
     <div className={themeStyles.wrapper}>
+      <SEO 
+        title={currentSeo.title}
+        description={currentSeo.description}
+        path={currentSeo.path}
+        keywords={currentSeo.keywords}
+      />
       {/* 1. Header / Navigation Bar */}
       {activeTab !== "Let's Talk" && (
         <header className="sticky top-0 z-50 backdrop-blur-md bg-white/70 dark:bg-neutral-950/70 border-b border-neutral-200/50 dark:border-neutral-800/50 transition-colors duration-300">
