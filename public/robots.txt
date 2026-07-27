@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kriscoresolutions.vercel.app/sitemap.xml
