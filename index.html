@@ -35,25 +35,40 @@
     <meta name="twitter:site" content="@Kriscore_Ltd" />
     <meta name="twitter:creator" content="@Kriscore_Ltd" />
 
-    <!-- JSON-LD Structured Data for Organization -->
+    <!-- JSON-LD Structured Data for Organization & WebSite -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Kriscore Solutions Limited",
-        "url": "https://kriscoresolutions.vercel.app",
-        "logo": "https://kriscoresolutions.vercel.app/logo.png",
-        "sameAs": [
-          "https://x.com/Kriscore_Ltd",
-          "https://www.linkedin.com/company/kriscore-solutions-limited/",
-          "https://www.instagram.com/kriscore_ltd"
-        ],
-        "description": "A global technology company creating future-ready software solutions for ambitious startups, growing enterprises, and visionary entrepreneurs.",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "contactType": "customer service",
-          "email": "contact@kriscore.com"
-        }
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://kriscoresolutions.vercel.app/#website",
+            "url": "https://kriscoresolutions.vercel.app/",
+            "name": "Kriscore Solutions Limited",
+            "alternateName": ["Kriscore", "Kriscore Solutions"],
+            "publisher": {
+              "@id": "https://kriscoresolutions.vercel.app/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://kriscoresolutions.vercel.app/#organization",
+            "name": "Kriscore Solutions Limited",
+            "url": "https://kriscoresolutions.vercel.app",
+            "logo": "https://kriscoresolutions.vercel.app/logo.png",
+            "sameAs": [
+              "https://x.com/Kriscore_Ltd",
+              "https://www.linkedin.com/company/kriscore-solutions-limited/",
+              "https://www.instagram.com/kriscore_ltd"
+            ],
+            "description": "A global technology company creating future-ready software solutions for ambitious startups, growing enterprises, and visionary entrepreneurs.",
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer service",
+              "email": "contact@kriscore.com"
+            }
+          }
+        ]
       }
     </script>
 
