@@ -364,6 +364,9 @@ export default function Index() {
             <img 
               src={isDark ? logoDarkImg : logoImg} 
               alt="Kriscore Solutions Ltd" 
+              decoding="async"
+              width="180"
+              height="80"
               className="h-20 md:h-24 w-auto object-contain transition-all duration-300"
             />
           </div>
@@ -762,6 +765,8 @@ export default function Index() {
               <img 
                 src={heroMockup} 
                 alt="Kriscore Premium Tech Mockup" 
+                fetchPriority="high"
+                decoding="async"
                 className="w-full h-auto object-contain relative z-10 drop-shadow-2xl transition-all duration-500"
               />
             </div>
