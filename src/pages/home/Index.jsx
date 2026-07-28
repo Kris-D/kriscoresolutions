@@ -466,6 +466,10 @@ export default function Index() {
                           <img
                             src={item.logo}
                             alt=""
+                            loading="lazy"
+                            decoding="async"
+                            width="40"
+                            height="40"
                             className="w-10 h-10 object-cover object-left rounded-lg bg-neutral-50 dark:bg-neutral-800 flex-shrink-0"
                           />
                           <div>
@@ -616,6 +620,10 @@ export default function Index() {
                           <img
                             src={item.logo}
                             alt=""
+                            loading="lazy"
+                            decoding="async"
+                            width="32"
+                            height="32"
                             className="w-8 h-8 object-cover object-left rounded-lg bg-neutral-100 dark:bg-neutral-800 flex-shrink-0"
                           />
                           <div>
@@ -917,6 +925,10 @@ export default function Index() {
                   <img
                     src={payeaseMockup}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
+                    width="32"
+                    height="32"
                     className="w-8 h-8 object-cover object-left rounded-lg dark:bg-purple-900/30 flex-shrink-0"
                   />
                   <span className="text-xs font-bold text-purple-600 dark:text-purple-400 block font-display">
@@ -1046,6 +1058,10 @@ export default function Index() {
                   <img
                     src={homeMockup}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
+                    width="32"
+                    height="32"
                     className="w-8 h-8 object-cover object-left rounded-lg dark:bg-emerald-900/30 flex-shrink-0"
                   />
                   <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 block font-display">
@@ -1224,6 +1240,10 @@ export default function Index() {
                   <img
                     src={clinicMockup}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
+                    width="32"
+                    height="32"
                     className="w-8 h-8 object-cover object-left rounded-lg dark:bg-blue-900/30 flex-shrink-0"
                   />
                   <span className="text-xs font-bold text-blue-600 dark:text-blue-400 block font-display">
@@ -1648,6 +1668,10 @@ export default function Index() {
               <img 
                 src={isDark ? logoDarkImg : logoImg} 
                 alt="Kriscore Solutions Ltd" 
+                loading="lazy"
+                decoding="async"
+                width="160"
+                height="64"
                 className="h-16 md:h-20 w-auto object-contain transition-all duration-300"
               />
             </div>
